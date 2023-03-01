@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { Input } from "../Input"
 
 export const LandingIntro = () => {
     return <LandingContainer>
@@ -7,6 +8,7 @@ export const LandingIntro = () => {
             <p>The best opportunities in some of the best companies
                 so you find the job that's right for you.</p>
         </DetailsContainer>
+        <Input />
     </LandingContainer>
 }
 
@@ -16,12 +18,12 @@ const LandingContainer = styled.div`
     min-height: 10rem;
     color: ${({ theme }) => theme.colors.whiteBlue};
 `
-
 const DetailsContainer = styled.div`
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 4rem;
 
     p{
         display: block;

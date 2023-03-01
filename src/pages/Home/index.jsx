@@ -1,6 +1,8 @@
 import React from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
+import styled from 'styled-components'
 import { Header, LandingIntro } from '../../components'
+import image from "../../assets/brands.svg"
 // import { useGetSearchedPostsQuery } from '../../client'
 
 export default function Home() {
@@ -9,6 +11,7 @@ export default function Home() {
     return (
         <>
             <Container fluid>
+                <BackroundImage src={image} alt="sadsa" />
                 <Header />
                 <Container>
                     <Row className="justify-content-md-center">
@@ -24,9 +27,23 @@ export default function Home() {
                 </Container>
             </Container >
         </>
-
     )
 }
+
+const BackroundImage = styled.img`
+    /* background-image: url("../../assets/brands.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center; */
+    object-fit: contain;
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    width: 100%;
+    /* z-index: -1; */
+    opacity: 0.02;
+`
 
 
 
