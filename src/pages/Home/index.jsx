@@ -2,7 +2,7 @@ import React from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 import styled from 'styled-components'
 import { Header, LandingIntro, JobCard } from '../../components'
-import image from "../../assets/brands.svg"
+import image from "../../assets/svgs/brands.svg"
 // import { useGetSearchedPostsQuery } from '../../client'
 
 export default function Home() {
@@ -24,8 +24,9 @@ export default function Home() {
                             <Row>
                                 <Col xs={6}><JobCard /></Col>
                                 <Col xs={6}><JobCard /></Col>
-                            </Row>
-                            <Row>
+                                <Col xs={6}><JobCard /></Col>
+                                <Col xs={6}><JobCard /></Col>
+                                <Col xs={6}><JobCard /></Col>
                                 <Col xs={6}><JobCard /></Col>
                                 <Col xs={6}><JobCard /></Col>
                             </Row>
