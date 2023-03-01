@@ -3,7 +3,7 @@ import { Col, Container, Row } from 'react-bootstrap'
 import styled from 'styled-components'
 import { Header, LandingIntro, JobCard } from '../../components'
 import image from "../../assets/svgs/brands.svg"
-// import { useGetSearchedPostsQuery } from '../../client'
+import { useGetSearchedPostsQuery } from '../../client'
 
 const colStyle = {
     display: "flex",
@@ -12,10 +12,10 @@ const colStyle = {
 }
 
 export default function Home() {
-    // const { data, isError, error, isLoading } = useGetSearchedPostsQuery()
+    const { data: jobs, isError, error, isLoading } = useGetSearchedPostsQuery()
     return (
         <>
-            <Container fluid>
+            <Container>
                 <BackroundImage src={image} alt="sadsa" />
                 <Header />
                 <Container>
@@ -27,7 +27,7 @@ export default function Home() {
                     <Row>
                         <Col style={{ background: "red" }} xs={2}>1 of 3</Col>
                         <Col xs={10} style={colStyle} >
-                            <JobCard />
+                            <JobCard jobs={jobs?.data} />
                         </Col>
                     </Row>
                 </Container>

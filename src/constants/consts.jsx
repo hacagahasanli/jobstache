@@ -607,5 +607,21 @@ export const fieldsDefaultValues = {
 }
 
 export const countries = {
-    "US": "Unided States"
+    "US": "United States",
+    "CA": "Canada",
+    "MX": "Mexico",
+    "JP": "Japan",
+    "CN": "China",
+    "KR": "South Korea",
+    "AU": "Australia",
+    "GB": "United Kingdom",
+    "DE": "Germany",
+    "FR": "France",
+    "ES": "Spain",
+    "IT": "Italy",
+    "RU": "Russia",
+    "BR": "Brazil",
+    "AR": "Argentina",
+    "IN": "India",
+    "AZ": "Azerbaijan",
 }

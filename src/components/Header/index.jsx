@@ -16,12 +16,11 @@ const StyledHeader = styled.header`
     width: 100%;
     min-height: 4.2rem;
     background: transparent;
-    margin-bottom: 2.5rem;
-    
+    margin-bottom: 5rem;
+
     div{
         position: relative;
         top: 1.2rem;
-        left: 1.4rem;
         max-width: max-content;
         display: flex;
         align-items: center;

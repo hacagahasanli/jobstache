@@ -18,7 +18,7 @@ export const getJobsApi = createApi({
     }),
     endpoints: (builder) => ({
         getSearchedPosts: builder.query({
-            query: (query = "Python developer in Texas, USA", num_pages = 1) =>
+            query: (query = "Front End Developer in India", num_pages = 1) =>
                 `/search?query=${query}&num_pages=${num_pages}`
         })
     })

@@ -3,13 +3,13 @@ import styled, { css } from 'styled-components';
 import { defaultJobs, fieldsDefaultValues, countries } from '../../constants';
 import { jobDescShorter, setSalaryDetail } from '../../utils';
 
-const { Title, Subtitle, Text, Link, Body } = Card;
+const { Title, Subtitle, Text, Body } = Card;
 let jobDescription, salary, location, descLength = 130;
 
-export const JobCard = () => {
+export const JobCard = ({ jobs }) => {
     return <>
         {
-            defaultJobs?.map(({ job_title, job_id, employer_name, job_description, job_min_salary, job_max_salary, job_salary_currency, job_country, job_state, job_city, job_salary_period }) => {
+            jobs?.map(({ job_title, job_id, employer_name, job_description, job_min_salary, job_max_salary, job_salary_currency, job_country, job_state, job_city, job_salary_period }) => {
                 jobDescription = job_description;
                 salary = fieldsDefaultValues?.UN_DISCLOSED;
                 location = fieldsDefaultValues?.WORLD_WIDE;
