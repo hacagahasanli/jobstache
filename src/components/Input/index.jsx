@@ -14,13 +14,15 @@ export const Input = () => {
     </InputGroup>
 }
 
-const StyledControl = styled(Control)`
-    background:${({ theme }) => theme.colors.darkBlue} !important;
-    color: white !important;
-    border: 1px solid #a1a1a1;
-    max-width: 35%;
-`
 
+
+const StyledControl = styled(Control)`
+    background:${({ theme }) => theme.colors.grayBlack} !important;
+    color: white !important;
+    border: 1px solid ${({ theme }) => theme.colors.lightBlue};
+    max-width: 35%;
+
+`
 const GotItButton = styled(Button)`
     background-color: ${({ theme }) => theme.colors.lightBlue};
     border: none;

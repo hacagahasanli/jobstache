@@ -13,7 +13,7 @@ const StyledHeader = styled.header`
     background: transparent;
     display: flex;
     align-items: center;
-    margin-bottom: 4rem;
+    margin-bottom: 3.5rem;
      
     span{
         color: ${({ theme }) => theme.colors.whiteBlue};
