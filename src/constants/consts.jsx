@@ -1,4 +1,4 @@
-const defaultJobs = [
+export const defaultJobs = [
     {
         "employer_name": "E-Solutions",
         "employer_logo": "https://media.glassdoor.com/sqll/425440/e-solutions-squarelogo-1537548633301.png",
