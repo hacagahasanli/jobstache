@@ -605,3 +605,7 @@ export const fieldsDefaultValues = {
     UN_DISCLOSED: "Undisclosed",
     WORLD_WIDE: "Worldwide",
 }
+
+export const countries = {
+    "US": "Unided States"
+}

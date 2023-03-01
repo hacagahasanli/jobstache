@@ -1,1 +1,1 @@
-export { defaultJobs, fieldsDefaultValues } from "./consts.jsx";
+export { defaultJobs, fieldsDefaultValues, countries } from "./consts.jsx";

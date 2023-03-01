@@ -1,33 +1,22 @@
 import Card from 'react-bootstrap/Card';
 import styled, { css } from 'styled-components';
-import { defaultJobs, fieldsDefaultValues } from '../../constants';
+import { defaultJobs, fieldsDefaultValues, countries } from '../../constants';
+import { jobDescShorter, setSalaryDetail } from '../../utils';
 
 const { Title, Subtitle, Text, Link, Body } = Card;
-let jobDescription, unDisclosed, worldWide, descLength = 130;
-
-const setSalaryDetail = ({ job_max_salary, job_min_salary, job_salary_currency, job_salary_period }) => {
-    const details = {
-        "HOUR": `${job_min_salary}${'$'}-${job_max_salary}${'$'} per hour`,
-        "YEAR": `${job_min_salary}${'k'}-${job_max_salary}${'k'} ${job_salary_currency}`,
-    }
-    return details[job_salary_period]
-}
-
-const jobDescShorter = (job_description) => {
-    return `${job_description.substring(0, descLength)} ...`
-}
+let jobDescription, salary, location, descLength = 130;
 
 export const JobCard = () => {
     return <>
         {
             defaultJobs?.map(({ job_title, job_id, employer_name, job_description, job_min_salary, job_max_salary, job_salary_currency, job_country, job_state, job_city, job_salary_period }) => {
                 jobDescription = job_description;
-                unDisclosed = fieldsDefaultValues?.UN_DISCLOSED;
-                worldWide = fieldsDefaultValues?.WORLD_WIDE;
+                salary = fieldsDefaultValues?.UN_DISCLOSED;
+                location = fieldsDefaultValues?.WORLD_WIDE;
 
-                if (job_description?.length > descLength) jobDescription = jobDescShorter(job_description)
-                if (job_min_salary) unDisclosed = setSalaryDetail(job_max_salary, job_min_salary, job_salary_currency, job_salary_period)
-                if (job_country && job_state && job_city) worldWide = `${job_country}, ${job_state}, ${job_city}`
+                if (job_description?.length > descLength) jobDescription = jobDescShorter(job_description, descLength)
+                if (job_min_salary) salary = setSalaryDetail(job_max_salary, job_min_salary, job_salary_currency, job_salary_period)
+                if (job_country) location = countries[job_country] ?? job_country
 
                 return (
                     <StyledCard key={job_id} className="mb-3">
@@ -40,13 +29,13 @@ export const JobCard = () => {
                                     <span class="material-symbols-rounded" style={{ fontSize: "1rem", color: "#FFD43B", fontWeight: "600" }}>
                                         location_on
                                     </span>
-                                    <Text>{worldWide}</Text>
+                                    <Text>{location}</Text>
                                 </SingleDetail>
                                 <SingleDetail>
                                     <span class="material-symbols-rounded" style={{ fontSize: "1rem", color: "#529f61", fontWeight: "600" }}>
                                         monetization_on
                                     </span>
-                                    <Text>{unDisclosed}</Text>
+                                    <Text>{salary}</Text>
                                 </SingleDetail>
                             </FooterDetails>
                         </Body>
