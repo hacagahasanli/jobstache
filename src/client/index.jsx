@@ -1,10 +1,10 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react"
 
-const Rapid_API_Key = import.meta.env.Rapid_API_Key;
-const Rapid_Key_Value = import.meta.env.Rapid_Key_Value;
-const Rapid_API_Host = import.meta.env.Rapid_API_Host;
-const Rapid_API_Host_Value = import.meta.env.Rapid_API_Host_Value;
-const BASE_URL = import.meta.env.BASE_URL
+const Rapid_API_Key = import.meta.env.VITE_Rapid_API_Key;
+const Rapid_Key_Value = import.meta.env.VITE_Rapid_Key_Value;
+const Rapid_API_Host = import.meta.env.VITE_Rapid_API_Host;
+const Rapid_API_Host_Value = import.meta.env.VITE_Rapid_API_Host_Value;
+const BASE_URL = import.meta.env.VITE_BASE_URL
 
 export const getJobsApi = createApi({
     reducerPath: "josbApi",
