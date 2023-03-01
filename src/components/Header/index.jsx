@@ -1,10 +1,10 @@
 import styled from "styled-components"
-import { Row, Col } from "react-bootstrap"
 
 export const Header = () => {
     return <StyledHeader>
         <span>Jobcaches</span>
     </StyledHeader>
+
 }
 
 const StyledHeader = styled.header`
@@ -13,12 +13,13 @@ const StyledHeader = styled.header`
     background: transparent;
     display: flex;
     align-items: center;
+    margin-bottom: 4rem;
      
     span{
         color: #ffffff;
         font-family: sans-serif;
         margin-left: 3rem;
         font-size:2rem;
-        font-weight: 700;
+        font-weight: 800;
     }
 `
