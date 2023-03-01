@@ -601,3 +601,7 @@ export const defaultJobs = [
     }
 ]
 
+export const fieldsDefaultValues = {
+    UN_DISCLOSED: "Undisclosed",
+    WORLD_WIDE: "Worldwide",
+}

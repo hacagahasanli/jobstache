@@ -1,53 +1,72 @@
 import Card from 'react-bootstrap/Card';
-import styled from 'styled-components';
-import { defaultJobs } from '../../constants';
+import styled, { css } from 'styled-components';
+import { defaultJobs, fieldsDefaultValues } from '../../constants';
 
 const { Title, Subtitle, Text, Link, Body } = Card;
-let unknownSalary = "Undisclosed";
-let worldWide = "Worldwide";
-
+let jobDescription, unDisclosed, worldWide;
 export const JobCard = () => {
     return <>
         {
-            defaultJobs?.map(({ job_title, job_id, employer_name, job_description }) => {
-                let jobDescription = job_description
+            defaultJobs?.map(({ job_title, job_id, employer_name, job_description, job_min_salary, job_max_salary, job_salary_currency, job_country, job_state, job_city }) => {
+                jobDescription = job_description;
+                unDisclosed = fieldsDefaultValues?.UN_DISCLOSED;
+                worldWide = fieldsDefaultValues?.WORLD_WIDE;
+
                 if (job_description?.length > 130) jobDescription = `${job_description.substring(0, 130)} ...`
+                if (job_min_salary) unDisclosed = `${job_min_salary}${'$'}-${job_max_salary}${'$'} per hour`
+                if (job_country && job_state && job_city) worldWide = `${job_country}, ${job_state}, ${job_city}`
 
-
-
-                return <StyledCard key={job_id} style={{ maxWidth: '32rem', backgroundColor: "#15537d" }} className="mb-3">
-                    <Body style={{ cursor: "pointer" }}>
-                        <Title style={{ color: "#BBE1FA", fontWeight: "700", cursor: "pointer" }}>{job_title}</Title>
-                        <Subtitle style={{ fontWeight: "700", color: "#1894e6", cursor: "pointer" }} className="mb-2">{employer_name}</Subtitle>
-                        <Text style={{ fontSize: ".9rem", fontWeight: "600", color: "#ffffff", cursor: "pointer" }}>{jobDescription}</Text>
-                        <FooterDetails>
-                            <SingleDetail>
-                                <span class="material-symbols-rounded" style={{ fontSize: "1rem", color: "#FFD43B", fontWeight: "600" }}>
-                                    location_on
-                                </span>
-                                <Text>{worldWide}</Text>
-                            </SingleDetail>
-                            <SingleDetail>
-                                <span class="material-symbols-rounded" style={{ fontSize: "1rem", color: "#529f61", fontWeight: "600" }}>
-                                    monetization_on
-                                </span>
-                                <Text>{unknownSalary}</Text>
-                            </SingleDetail>
-                        </FooterDetails>
-                    </Body>
-                </StyledCard>
+                return (
+                    <StyledCard key={job_id} className="mb-3">
+                        <Body>
+                            <StyledTitle>{job_title}</StyledTitle>
+                            <StyledSubTitle className="mb-2">{employer_name}</StyledSubTitle>
+                            <StyledText>{jobDescription}</StyledText>
+                            <FooterDetails>
+                                <SingleDetail>
+                                    <span class="material-symbols-rounded" style={{ fontSize: "1rem", color: "#FFD43B", fontWeight: "600" }}>
+                                        location_on
+                                    </span>
+                                    <Text>{worldWide}</Text>
+                                </SingleDetail>
+                                <SingleDetail>
+                                    <span class="material-symbols-rounded" style={{ fontSize: "1rem", color: "#529f61", fontWeight: "600" }}>
+                                        monetization_on
+                                    </span>
+                                    <Text>{unDisclosed}</Text>
+                                </SingleDetail>
+                            </FooterDetails>
+                        </Body>
+                    </StyledCard>
+                )
             })
         }
     </>
 }
 
+const forcedCardStyle = css`
+    font-weight: 600; 
+    cursor: pointer ;
+`
+const StyledText = styled(Text)`
+    font-size: .9rem;
+    color: #ffffff;
+    ${forcedCardStyle}
+`
+const StyledTitle = styled(Title)`
+    color:#BBE1FA;
+    ${forcedCardStyle}
+`
+const StyledSubTitle = styled(Subtitle)`
+    color: #1894e6;
+    ${forcedCardStyle}
+`
 const FooterDetails = styled.div`
     display: flex;
     align-items: center;
     gap:1rem;
     cursor: pointer;
 `
-
 const SingleDetail = styled.div`
     display: flex;
     align-items: center;
@@ -56,13 +75,14 @@ const SingleDetail = styled.div`
     font-weight: 600;
     font-size: 0.8rem;
 `
-
 const StyledCard = styled(Card)`
     min-width: 49%;
     border-radius: 10px;
     border: 1px solid #2b6690;
     cursor: pointer;
     transition: scale 0.2s;
+    max-width: 32rem; 
+    background-color: #0e4366;
     :hover{
         scale:1.02;
     }
