@@ -10,14 +10,28 @@ export const LandingIntro = () => {
                 <p>The best opportunities in some of the best companies
                     so you find the job that's right for you.</p>
             </DetailsContainer>
-            <Input />
+            <div>
+                <Input />
+                <TinyInfo>300+ developers already signed up!</TinyInfo>
+            </div>
         </LandingContainer>
     )
 }
 
-
+const TinyInfo = styled.span`
+    padding: 0;
+    margin:0;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    font-size: smaller;
+    font-weight: 600;
+    color:#8c8a8a ;
+    /* ${({ theme }) => theme.colors.whiteBlue} */
+`
 const LandingContainer = styled(Stack)`
     color: ${({ theme }) => theme.colors.whiteBlue};
+    margin-bottom: 4rem;
 `
 const DetailsContainer = styled.div`
     display: flex;
