@@ -5,6 +5,12 @@ import { Header, LandingIntro, JobCard } from '../../components'
 import image from "../../assets/svgs/brands.svg"
 // import { useGetSearchedPostsQuery } from '../../client'
 
+const colStyle = {
+    display: "flex",
+    columnGap: "0.9rem",
+    flexWrap: "wrap",
+}
+
 export default function Home() {
     // const { data, isError, error, isLoading } = useGetSearchedPostsQuery()
     return (
@@ -20,16 +26,8 @@ export default function Home() {
                     </Row>
                     <Row>
                         <Col style={{ background: "red" }} xs={2}>1 of 3</Col>
-                        <Col xs={10}>
-                            <Row>
-                                <Col xs={6}><JobCard /></Col>
-                                <Col xs={6}><JobCard /></Col>
-                                <Col xs={6}><JobCard /></Col>
-                                <Col xs={6}><JobCard /></Col>
-                                <Col xs={6}><JobCard /></Col>
-                                <Col xs={6}><JobCard /></Col>
-                                <Col xs={6}><JobCard /></Col>
-                            </Row>
+                        <Col xs={10} style={colStyle} >
+                            <JobCard />
                         </Col>
                     </Row>
                 </Container>
