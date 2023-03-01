@@ -1,8 +1,13 @@
 import styled from "styled-components"
+import { logojs, textlogo } from "../../assets"
+
 
 export const Header = () => {
     return <StyledHeader>
-        <span>Jobcaches</span>
+        <div>
+            <img src={logojs} alt="logojs" width={40} />
+            <img src={textlogo} alt="textlog" />
+        </div>
     </StyledHeader>
 
 }
@@ -11,15 +16,15 @@ const StyledHeader = styled.header`
     width: 100%;
     min-height: 4.2rem;
     background: transparent;
-    display: flex;
-    align-items: center;
-    margin-bottom: 3.5rem;
-     
-    span{
-        color: ${({ theme }) => theme.colors.whiteBlue};
-        font-family: sans-serif;
-        margin-left: 3rem;
-        font-size:2rem;
-        font-weight: 800;
+    margin-bottom: 2.5rem;
+    
+    div{
+        position: relative;
+        top: 1.2rem;
+        left: 1.4rem;
+        max-width: max-content;
+        display: flex;
+        align-items: center;
+        gap:0.8rem;
     }
 `
