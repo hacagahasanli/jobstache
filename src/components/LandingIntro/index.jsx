@@ -14,7 +14,7 @@ export const LandingIntro = () => {
 const LandingContainer = styled.div`
     width: 100%;
     min-height: 10rem;
-    color: #ffffff;
+    color: ${({ theme }) => theme.colors.whiteBlue};
 `
 
 const DetailsContainer = styled.div`
@@ -23,11 +23,18 @@ const DetailsContainer = styled.div`
     flex-direction: column;
     align-items: center;
 
+    p{
+        display: block;
+        width: 30%;
+        text-align: center;
+        color: ${({ theme }) => theme.colors.whiteBlue};;
+    }
+
     h2{
         font-size: 3rem;
         font-weight: 800;
         span{
-            color:#0f4c75
+            color:${({ theme }) => theme.colors.lightBlue}
         }
     }
 `

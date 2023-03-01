@@ -16,7 +16,7 @@ const StyledHeader = styled.header`
     margin-bottom: 4rem;
      
     span{
-        color: #ffffff;
+        color: ${({ theme }) => theme.colors.whiteBlue};
         font-family: sans-serif;
         margin-left: 3rem;
         font-size:2rem;
