@@ -1,15 +1,9 @@
 import React from 'react'
-import { Col, Container, Row } from 'react-bootstrap'
 import styled from 'styled-components'
-import { Header, LandingIntro, JobCard } from '../../components'
 import image from "../../assets/svgs/brands.svg"
+import { Col, Container, Row } from 'react-bootstrap'
 import { useGetSearchedPostsQuery } from '../../client'
-
-const colStyle = {
-    display: "flex",
-    columnGap: "0.9rem",
-    flexWrap: "wrap",
-}
+import { Header, LandingIntro, JobCard } from '../../components'
 
 export default function Home() {
     const { data: jobs, isError, error, isLoading } = useGetSearchedPostsQuery()
@@ -26,15 +20,21 @@ export default function Home() {
                     </Row>
                     <Row>
                         <Col style={{ background: "red" }} xs={2}>1 of 3</Col>
-                        <Col xs={10} style={colStyle} >
+                        <CardContainer xs={10}>
                             <JobCard jobs={jobs?.data} />
-                        </Col>
+                        </CardContainer>
                     </Row>
                 </Container>
             </Container >
         </>
     )
 }
+
+const CardContainer = styled(Col)`
+    display: flex;
+    column-gap: 0.9rem;
+    flex-wrap: wrap;
+`
 
 const BackroundImage = styled.img`
     object-fit: contain;

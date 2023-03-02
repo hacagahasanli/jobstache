@@ -1,7 +1,7 @@
 import Card from 'react-bootstrap/Card';
 import styled, { css } from 'styled-components';
-import { defaultJobs, fieldsDefaultValues, countries } from '../../constants';
 import { jobDescShorter, setSalaryDetail } from '../../utils';
+import { fieldsDefaultValues, countries } from '../../constants'; x
 
 const { Title, Subtitle, Text, Body } = Card;
 let jobDescription, salary, location, descLength = 130;
