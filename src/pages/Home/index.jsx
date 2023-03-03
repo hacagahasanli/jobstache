@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import image from "../../assets/svgs/brands.svg"
-import { Col, Container, Row } from 'react-bootstrap'
+import { Button, Col, Container, Row } from 'react-bootstrap'
 import { useGetSearchedPostsQuery } from '../../client'
 import { Header, LandingIntro, JobCard } from '../../components'
 import { defaultJobs } from '../../constants'
@@ -29,12 +29,34 @@ export default function Home() {
                         <CardContainer xs={10}>
                             <JobCard jobs={defaultJobs} />
                         </CardContainer>
+                        <StyledCol>
+                            <UploadMore variant="primary">Load more</UploadMore>
+                        </StyledCol>
                     </Row>
                 </Container>
             </Container>
         </>
     )
 }
+
+const UploadMore = styled(Button)`
+    background-color: ${({ theme }) => theme.colors.lightBlue};
+    border: none;
+    outline: none;
+    font-size: .9rem;
+    font-weight: 700;
+    padding: .6rem 1.9rem;
+    transform: translateX(83%);
+    cursor: pointer !important;
+    
+`
+
+const StyledCol = styled(Col)`
+    display: flex;
+    justify-content: center;
+    padding: 2rem 0 2rem 0;
+
+`
 
 const CardContainer = styled(Col)`
     display: grid;

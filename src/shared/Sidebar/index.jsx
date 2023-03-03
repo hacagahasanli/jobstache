@@ -54,7 +54,7 @@ const empTypes = [
 
 export const Sidebard = () => {
 
-    const [active, setActive] = useState({
+    const [{ exp, emp }, setActive] = useState({
         exp: "",
         emp: ""
     });
@@ -72,7 +72,7 @@ export const Sidebard = () => {
             <div>
                 {
                     expLevels?.map(({ id, type, value }) => (
-                        <ExpTag active={active?.exp === type} key={id} onClick={() => activeExpHandler(type, "exp")}>{value}</ExpTag>
+                        <ExpTag active={exp === type} key={id} onClick={() => activeExpHandler(type, "exp")}>{value}</ExpTag>
                     ))
                 }
             </div>
@@ -80,7 +80,7 @@ export const Sidebard = () => {
             <div>
                 {
                     empTypes?.map(({ id, type, value }) => (
-                        <ExpTag active={active?.emp === type} key={id} onClick={() => activeExpHandler(type, "emp")}>{value}</ExpTag>
+                        <ExpTag active={emp === type} key={id} onClick={() => activeExpHandler(type, "emp")}>{value}</ExpTag>
                     ))
                 }
             </div>
@@ -98,7 +98,9 @@ const ReqType = styled.h5`
 const ExtraDetailsContainer = styled.div`
     display: flex;
     width: 100%;
+    min-height: 100%;
     flex-direction: column;
+    position: relative;
     gap:.8rem;
 
     h5{
@@ -116,24 +118,18 @@ const ExtraDetailsContainer = styled.div`
 
 const ExpTag = styled.span`
     padding: 0.4rem 0.4rem;
-    background: ${({ active }) => active ? "#BBE1FA" : "#3282BB"};
+    background: ${({ active }) => active ? "#46abee" : "#215e8a"};
     color: white;
     font-size: .7rem;
     font-weight: 600;
     border-radius: 4px;
     cursor: pointer;
-    z-index: 10;
 `
-
-
-// grayBlack: "#1B262C",
-//     darkBlue: "#0F4C75",
-//         lightBlue: "#3282BB",
-//             whiteBlue: "#BBE1FA
 
 const Column = styled(Col)`
     padding: 1rem 1.1rem;
-    background: #0F4C75;
+    background: #0e4366;
     border-radius: 10px;
     max-height: 20rem;
+    border: 1px solid #2b6690;
 `
