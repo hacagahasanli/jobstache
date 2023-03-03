@@ -13,6 +13,7 @@ export const Header = () => {
 }
 
 const StyledHeader = styled.header`
+
     width: 100%;
     min-height: 4.2rem;
     background: transparent;
