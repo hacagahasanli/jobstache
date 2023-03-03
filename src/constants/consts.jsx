@@ -634,3 +634,121 @@ export const countries = {
     "IN": "India",
     "AZ": "Azerbaijan",
 }
+
+export const defaultJobDetail = {
+    "employer_name": "E-Solutions",
+    "employer_logo": "https://media.glassdoor.com/sqll/425440/e-solutions-squarelogo-1537548633301.png",
+    "employer_website": "http://www.e-solutionsinc.com",
+    "employer_company_type": null,
+    "job_publisher": "LinkedIn",
+    "job_id": "w8XEyFU13yAAAAAAAAAAAA==",
+    "job_employment_type": "FULLTIME",
+    "job_title": "Python Developer",
+    "job_apply_link": "https://www.linkedin.com/jobs/view/python-developer-at-e-solutions-3500559373",
+    "job_description": "Hello,\n\nHope you doing well,\n\nJob Title: Python Developer\n\nLocation: Austin, TX\n\nFull Time\n\nJD:\n\nPython role requirements -\n\n1. Development capability – Python backend API/Service to read the data from either from file or database as the source, then do ETL\n\n2. Independent, who can coordinate with business understand the requirements, do extraction, translation/transform and load to the target\n\nUnfeigned Regards,\n\nShiv Prakash | Technical Recruiter\n\nDesk: (669)-309-1745\n\nEmail: Shiv.p@e-solutionsinc.com\n\n2N Market St, Suite # 400, San Jose, CA- 95113\n\nWebsite: www.e-solutionsinc.com\n\nUSA | CANADA | UK | SINGAPORE | MALAYSIA | INDIA\n\nDisclaimer: E-Solutions provides equal employment opportunities (EEO) to all employees and applicants for employment without regard to race, color, religion, gender, sexual orientation, gender identity or expression, national origin, age, disability, genetic information, marital status, amnesty, or status as a covered veteran in accordance with applicable federal, state and local laws. We especially invite women, minorities, veterans, and individuals with disabilities to apply. EEO/AA/M/F/Vet/Disability",
+    "job_is_remote": false,
+    "job_posted_at_timestamp": 1677620749,
+    "job_posted_at_datetime_utc": "2023-02-28T21:45:49.000Z",
+    "job_city": "Austin",
+    "job_state": "TX",
+    "job_country": "US",
+    "job_latitude": 30.267153,
+    "job_longitude": -97.74306,
+    "job_benefits": null,
+    "job_google_link": "https://www.google.com/search?gl=us&hl=en&q=w8XEyFU13yAAAAAAAAAAAA%3D%3D&cs=1&ibp=htl;jobs#fpstate=tldetail&htivrt=jobs&htiq=w8XEyFU13yAAAAAAAAAAAA%3D%3D&htidocid=w8XEyFU13yAAAAAAAAAAAA%3D%3D",
+    "job_offer_expiration_datetime_utc": "2023-03-30T21:45:49.000Z",
+    "job_offer_expiration_timestamp": 1680212749,
+    "job_required_experience": {
+        "no_experience_required": false,
+        "required_experience_in_months": null,
+        "experience_mentioned": false,
+        "experience_preferred": false
+    },
+    "job_required_skills": null,
+    "job_required_education": {
+        "postgraduate_degree": false,
+        "professional_certification": false,
+        "high_school": false,
+        "associates_degree": false,
+        "bachelors_degree": true,
+        "degree_mentioned": false,
+        "degree_preferred": false,
+        "professional_certification_mentioned": false
+    },
+    "job_experience_in_place_of_education": false,
+    "job_min_salary": null,
+    "job_max_salary": null,
+    "job_salary_currency": null,
+    "job_salary_period": null,
+    "job_highlights": {
+        "Qualifications": [
+            "Development capability – Python backend API/Service to read the data from either from file or database as the source, then do ETL"
+        ]
+    },
+    "job_job_title": null,
+    "estimated_salaries": [
+        {
+            "location": "Austin, TX",
+            "job_title": "Python Developer",
+            "publisher_name": "Indeed",
+            "publisher_link": "https://www.indeed.com/career/python-developer/salaries/Austin--TX",
+            "min_salary": 89583.1732419785,
+            "max_salary": 162146.34647987425,
+            "median_salary": 120522.13177402335,
+            "salary_period": "YEAR",
+            "salary_currency": "USD"
+        },
+        {
+            "location": "Austin, TX",
+            "job_title": "Python Developer",
+            "publisher_name": "Glassdoor",
+            "publisher_link": "https://www.glassdoor.com/Salaries/austin-python-developer-salary-SRCH_IL.0,6_IM60_KO7,23.htm",
+            "min_salary": 60364,
+            "max_salary": 140244,
+            "median_salary": 92009,
+            "salary_period": "YEAR",
+            "salary_currency": "USD"
+        },
+        {
+            "location": "Austin, TX",
+            "job_title": "python developer",
+            "publisher_name": "Randstad USA",
+            "publisher_link": "https://www.randstadusa.com/salary/python-developer-salaries/austin-texas",
+            "min_salary": 106996,
+            "max_salary": 162073,
+            "median_salary": 138717,
+            "salary_period": "YEAR",
+            "salary_currency": "USD"
+        }
+    ],
+    "apply_options": [],
+    "employer_reviews": [
+        {
+            "publisher": "Glassdoor",
+            "employer_name": "e-Solutions",
+            "score": 3.9,
+            "num_stars": 4,
+            "review_count": 152,
+            "max_score": 5,
+            "reviews_link": "https://www.glassdoor.com/Reviews/e-Solutions-Reviews-E425440.htm?utm_campaign=google_jobs_reviews&utm_source=google_jobs_reviews&utm_medium=organic"
+        },
+        {
+            "publisher": "Indeed",
+            "employer_name": "E-solutions Inc",
+            "score": 3.5,
+            "num_stars": 3.5,
+            "review_count": 42,
+            "max_score": 5,
+            "reviews_link": "https://www.indeed.com/cmp/E--solutions-Inc/reviews?utm_campaign=google_jobs_reviews&utm_source=google_jobs_reviews&utm_medium=organic"
+        },
+        {
+            "publisher": "AmbitionBox",
+            "employer_name": "e-Solutions",
+            "score": 3.5,
+            "num_stars": 3.5,
+            "review_count": 87,
+            "max_score": 5,
+            "reviews_link": "https://www.ambitionbox.com/reviews/e-solutions-reviews?utm_campaign=google_jobs_reviews&utm_source=google_jobs_reviews&utm_medium=organic"
+        }
+    ]
+}

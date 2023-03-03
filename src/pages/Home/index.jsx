@@ -14,34 +14,23 @@ export default function Home() {
 
     return (
         <>
-            <Container>
+            <Container >
                 <BackroundImage src={image} alt="sadsa" />
                 <Header />
                 <Container>
                     <Row className="justify-content-md-center">
-                        <Col>
-                            <LandingIntro />
-                        </Col>
+                        <LandingIntro />
                     </Row>
                     <Row>
-                        <Col style={{ background: "red", maxHeight: "30rem" }} xs={2} >
-                            1 of 3
-                        </Col>
-                        <CardContainer xs={10}>
-                            <JobCard jobs={defaultJobs} />
-                        </CardContainer>
+                        <JobCard jobs={defaultJobs} />
                     </Row>
                 </Container>
-            </Container >
+            </Container>
         </>
     )
 }
 
-const CardContainer = styled(Col)`
-    display: flex;
-    column-gap: 0.9rem;
-    flex-wrap: wrap;
-`
+
 
 const BackroundImage = styled.img`
     object-fit: contain;

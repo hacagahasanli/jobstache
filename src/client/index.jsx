@@ -9,7 +9,7 @@ const BASE_URL = import.meta.env.VITE_BASE_URL
 export const getJobsApi = createApi({
     reducerPath: "getJobsApi",
     baseQuery: fetchBaseQuery({
-        baseUrl: BASE_URL,
+        // baseUrl: BASE_URL,
         prepareHeaders: (headers) => {
             headers.set(Rapid_API_Key, Rapid_Key_Value)
             headers.set(Rapid_API_Host, Rapid_API_Host_Value)

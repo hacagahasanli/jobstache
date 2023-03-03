@@ -1,20 +1,22 @@
-import { Stack } from "react-bootstrap"
+import { Col, Stack } from "react-bootstrap"
 import styled from "styled-components"
 import { Input } from "../Input"
 
 export const LandingIntro = () => {
     return (
-        <LandingContainer gap={4} className="col-md-12 mx-auto">
-            <DetailsContainer>
-                <h2>Hand-picked jobs for<span> developers</span></h2>
-                <p>The best opportunities in some of the best companies
-                    so you find the job that's right for you.</p>
-            </DetailsContainer>
-            <div>
-                <Input />
-                <TinyInfo>300+ developers already signed up!</TinyInfo>
-            </div>
-        </LandingContainer>
+        <Col>
+            <LandingContainer gap={4} className="col-md-12 mx-auto">
+                <DetailsContainer>
+                    <h2>Hand-picked jobs for<span> developers</span></h2>
+                    <p>The best opportunities in some of the best companies
+                        so you find the job that's right for you.</p>
+                </DetailsContainer>
+                <div>
+                    <Input />
+                    <TinyInfo>300+ developers already signed up!</TinyInfo>
+                </div>
+            </LandingContainer>
+        </Col>
     )
 }
 
