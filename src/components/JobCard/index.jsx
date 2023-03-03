@@ -41,29 +41,27 @@ export const JobCard = ({ jobs }) => {
                 if (job_country) location = countries[job_country] ?? job_country
 
                 return (
-                    <CardContainer xs={10}>
-                        <StyledCard onClick={() => handler(job_id)} key={job_id} className="mb-3">
-                            <Body>
-                                <StyledTitle>{job_title}</StyledTitle>
-                                <StyledSubTitle className="mb-2">{employer_name}</StyledSubTitle>
-                                <StyledText>{jobDescription}</StyledText>
-                                <FooterDetails>
-                                    <SingleDetail>
-                                        <span className="material-symbols-rounded" style={{ fontSize: "1rem", color: "#FFD43B", fontWeight: "600" }}>
-                                            location_on
-                                        </span>
-                                        <Text>{location}</Text>
-                                    </SingleDetail>
-                                    <SingleDetail>
-                                        <span className="material-symbols-rounded" style={{ fontSize: "1rem", color: "#529f61", fontWeight: "600" }}>
-                                            monetization_on
-                                        </span>
-                                        <Text>{salary}</Text>
-                                    </SingleDetail>
-                                </FooterDetails>
-                            </Body>
-                        </StyledCard>
-                    </CardContainer>
+                    <StyledCard onClick={() => handler(job_id)} key={job_id} className="mb-3">
+                        <Body>
+                            <StyledTitle>{job_title}</StyledTitle>
+                            <StyledSubTitle className="mb-2">{employer_name}</StyledSubTitle>
+                            <StyledText>{jobDescription}</StyledText>
+                            <FooterDetails>
+                                <SingleDetail>
+                                    <span className="material-symbols-rounded" style={{ fontSize: "1rem", color: "#FFD43B", fontWeight: "600" }}>
+                                        location_on
+                                    </span>
+                                    <Text>{location}</Text>
+                                </SingleDetail>
+                                <SingleDetail>
+                                    <span className="material-symbols-rounded" style={{ fontSize: "1rem", color: "#529f61", fontWeight: "600" }}>
+                                        monetization_on
+                                    </span>
+                                    <Text>{salary}</Text>
+                                </SingleDetail>
+                            </FooterDetails>
+                        </Body>
+                    </StyledCard>
                 )
             })
         }
@@ -71,52 +69,45 @@ export const JobCard = ({ jobs }) => {
 }
 
 const forcedCardStyle = css`
-                        font-weight: 600;
-                        cursor: pointer ;
-                        `
+    font-weight: 600; 
+    cursor: pointer ;
+`
 const StyledText = styled(Text)`
-                        font-size: .9rem;
-                        color: #ffffff;
-                        ${forcedCardStyle}
-                        `
+    font-size: .9rem;
+    color: #ffffff;
+    ${forcedCardStyle}
+`
 const StyledTitle = styled(Title)`
-                        color:#BBE1FA;
-                        ${forcedCardStyle}
-                        `
+    color:#BBE1FA;
+    ${forcedCardStyle}
+`
 const StyledSubTitle = styled(Subtitle)`
-                        color: #1894e6;
-                        ${forcedCardStyle}
-                        `
+    color: #1894e6;
+    ${forcedCardStyle}
+`
 const FooterDetails = styled.div`
-                        display: flex;
-                        align-items: center;
-                        gap:1rem;
-                        cursor: pointer;
-                        `
+    display: flex;
+    align-items: center;
+    gap:1rem;
+    cursor: pointer;
+`
 const SingleDetail = styled.div`
-                        display: flex;
-                        align-items: center;
-                        gap:0.2rem;
-                        color:#e5e5e5;
-                        font-weight: 600;
-                        font-size: 0.8rem;
-                        `
+    display: flex;
+    align-items: center;
+    gap:0.2rem;
+    color:#e5e5e5;
+    font-weight: 600;
+    font-size: 0.8rem;
+`
 const StyledCard = styled(Card)`
-                        width: 100%;
-                        border-radius: 10px;
-                        border: 1px solid #2b6690;
-                        cursor: pointer;
-                        transition: scale 0.2s;
-                        background-color: #0e4366;
-                        :hover{
-                            scale:1.02;
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid #2b6690;
+    cursor: pointer;
+    transition: scale 0.2s;
+    background-color: #0e4366;
+    :hover{
+        scale:1.02;
     }
-                        /* padding: 0 0 1.5rem 1rem; */
-                        `
-
-const CardContainer = styled(Col)`
-                        display: grid;
-                        column-gap: 0.9rem;
-                        grid-template-columns: 1fr 1fr;
-                        place-items: center;
-                        `
+        /* padding: 0 0 1.5rem 1rem; */
+`
