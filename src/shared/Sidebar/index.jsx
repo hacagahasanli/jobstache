@@ -40,15 +40,16 @@ const empTypes = [
         value: "contractor"
     },
     {
+        id: "intern",
+        type: "INTERN",
+        value: "intern"
+    },
+    {
         id: "part_time",
         type: "PARTTIME",
         value: "parttime"
     },
-    {
-        id: "intern",
-        type: "INTERN",
-        value: "intern"
-    }
+
 ]
 
 export const Sidebard = () => {
@@ -67,6 +68,7 @@ export const Sidebard = () => {
     return <Column xs={2} >
         <ExtraDetailsContainer>
             <h5>Requirements</h5>
+            <ReqType>expreinces</ReqType>
             <div>
                 {
                     expLevels?.map(({ id, type, value }) => (
@@ -74,6 +76,7 @@ export const Sidebard = () => {
                     ))
                 }
             </div>
+            <ReqType>employer type</ReqType>
             <div>
                 {
                     empTypes?.map(({ id, type, value }) => (
@@ -85,11 +88,17 @@ export const Sidebard = () => {
     </Column>
 }
 
+const ReqType = styled.h5`
+    margin: 0;
+    padding: 0; 
+    text-align: left;
+    font-size: 0.9rem;
+`
+
 const ExtraDetailsContainer = styled.div`
     display: flex;
     width: 100%;
     flex-direction: column;
-    align-items: center;
     gap:.8rem;
 
     h5{
@@ -109,7 +118,7 @@ const ExpTag = styled.span`
     padding: 0.4rem 0.4rem;
     background: ${({ active }) => active ? "#BBE1FA" : "#3282BB"};
     color: white;
-    font-size: .72rem;
+    font-size: .7rem;
     font-weight: 600;
     border-radius: 4px;
     cursor: pointer;
