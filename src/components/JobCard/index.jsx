@@ -1,15 +1,33 @@
 import Card from 'react-bootstrap/Card';
 import styled, { css } from 'styled-components';
 import { jobDescShorter, setSalaryDetail } from '../../utils';
-import { fieldsDefaultValues, countries } from '../../constants'; 
+import { fieldsDefaultValues, countries, defaultJobs } from '../../constants';
+import getJobsApi, { useSetJobDetailsQuery } from '../../client';
 
 const { Title, Subtitle, Text, Body } = Card;
 let jobDescription, salary, location, descLength = 130;
 
 export const JobCard = ({ jobs }) => {
+    const [setJobDetails, { isLoading, isError, data, error }] = getJobsApi.endpoints.setJobDetails.useLazyQuery()
+    // const { data: jobs, isError, error, isLoading } = useSetJobDetailsQuery(jobsData)
+    const handler = (job_id) => setJobDetails(job_id)
+
     return <>
         {
-            jobs?.map(({ job_title, job_id, employer_name, job_description, job_min_salary, job_max_salary, job_salary_currency, job_country, job_state, job_city, job_salary_period }) => {
+            jobs?.map((
+                { job_title,
+                    job_id,
+                    employer_name,
+                    job_description,
+                    job_min_salary,
+                    job_max_salary,
+                    job_salary_currency,
+                    job_country,
+                    job_state,
+                    job_city,
+                    job_salary_period
+                }) => {
+
                 jobDescription = job_description;
                 salary = fieldsDefaultValues?.UN_DISCLOSED;
                 location = fieldsDefaultValues?.WORLD_WIDE;
@@ -19,20 +37,20 @@ export const JobCard = ({ jobs }) => {
                 if (job_country) location = countries[job_country] ?? job_country
 
                 return (
-                    <StyledCard key={job_id} className="mb-3">
+                    <StyledCard onClick={() => handler(job_id)} key={job_id} className="mb-3">
                         <Body>
                             <StyledTitle>{job_title}</StyledTitle>
                             <StyledSubTitle className="mb-2">{employer_name}</StyledSubTitle>
                             <StyledText>{jobDescription}</StyledText>
                             <FooterDetails>
                                 <SingleDetail>
-                                    <span class="material-symbols-rounded" style={{ fontSize: "1rem", color: "#FFD43B", fontWeight: "600" }}>
+                                    <span className="material-symbols-rounded" style={{ fontSize: "1rem", color: "#FFD43B", fontWeight: "600" }}>
                                         location_on
                                     </span>
                                     <Text>{location}</Text>
                                 </SingleDetail>
                                 <SingleDetail>
-                                    <span class="material-symbols-rounded" style={{ fontSize: "1rem", color: "#529f61", fontWeight: "600" }}>
+                                    <span className="material-symbols-rounded" style={{ fontSize: "1rem", color: "#529f61", fontWeight: "600" }}>
                                         monetization_on
                                     </span>
                                     <Text>{salary}</Text>

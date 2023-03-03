@@ -7,7 +7,7 @@ const Rapid_API_Host_Value = import.meta.env.VITE_Rapid_API_Host_Value;
 const BASE_URL = import.meta.env.VITE_BASE_URL
 
 export const getJobsApi = createApi({
-    reducerPath: "josbApi",
+    reducerPath: "getJobsApi",
     baseQuery: fetchBaseQuery({
         baseUrl: BASE_URL,
         prepareHeaders: (headers) => {
@@ -20,9 +20,14 @@ export const getJobsApi = createApi({
         getSearchedPosts: builder.query({
             query: (query = "Front End Developer in India", num_pages = 1) =>
                 `/search?query=${query}&num_pages=${num_pages}`
+        }),
+        setJobDetails: builder.query({
+            query: (job_id) => `/job-details?job_id=${job_id}`
         })
     })
 })
 //https://jsearch.p.rapidapi.com/search?query=Python developer in Texas, USA&num_pages=1
 //{ query = 'Python developer in Texas, USA', num_pages = '1' }
-export const { useGetSearchedPostsQuery } = getJobsApi
+export const { useGetSearchedPostsQuery, useSetJobDetailsQuery } = getJobsApi
+
+export default getJobsApi;

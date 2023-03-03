@@ -1,13 +1,16 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Provider } from 'react-redux';
 import { RouterProvider } from 'react-router-dom';
 import { router } from './routes';
-
+import { store } from './store';
 
 const App = () => {
   return (
-    <RouterProvider {...{ router }}>
+    <Provider {...{ store }}>
+      <RouterProvider {...{ router }}>
+      </RouterProvider>
+    </Provider>
 
-    </RouterProvider>
   )
 }
 

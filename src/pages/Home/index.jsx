@@ -1,12 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import image from "../../assets/svgs/brands.svg"
 import { Col, Container, Row } from 'react-bootstrap'
 import { useGetSearchedPostsQuery } from '../../client'
 import { Header, LandingIntro, JobCard } from '../../components'
+import { defaultJobs } from '../../constants'
 
 export default function Home() {
-    const { data: jobs, isError, error, isLoading } = useGetSearchedPostsQuery()
+
+    // const jobs = defaultJobs;
+    // const { data: jobs, isError, error, isLoading } = useGetSearchedPostsQuery()
+    // console.log(defaultJobs, "DEFAULT JOBS");
+
     return (
         <>
             <Container>
@@ -19,9 +24,11 @@ export default function Home() {
                         </Col>
                     </Row>
                     <Row>
-                        <Col style={{ background: "red" }} xs={2}>1 of 3</Col>
+                        <Col style={{ background: "red", maxHeight: "30rem" }} xs={2} >
+                            1 of 3
+                        </Col>
                         <CardContainer xs={10}>
-                            <JobCard jobs={jobs?.data} />
+                            <JobCard jobs={defaultJobs} />
                         </CardContainer>
                     </Row>
                 </Container>
