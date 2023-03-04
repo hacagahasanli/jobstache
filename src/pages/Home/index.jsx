@@ -16,7 +16,7 @@ export default function Home() {
     // }, [])
     const getSearchedPosts = () => { }
     const isLoading = false, isFetching = false;
-    const loadedComponent = (isLoading || isFetching) ? <JobSpinner /> : <JonDatas jobs={defaultJobs} />;
+    const loadedComponent = (isLoading || isFetching) ? <JobSpinner /> : <JobDatas jobs={defaultJobs} />;
 
     return (
         <>
@@ -41,7 +41,7 @@ export default function Home() {
 
 
 
-const JonDatas = ({ jobs }) => {
+const JobDatas = ({ jobs }) => {
     return <>
         <CardContainer xs={10}>
             <JobCard {...{ jobs }} />
