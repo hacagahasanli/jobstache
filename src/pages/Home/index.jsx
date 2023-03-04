@@ -123,5 +123,4 @@ const BackroundImage = styled.img`
     width: 100%;
     opacity: 0.02;
 `
-
 // console.log(defaultJobs, "DEFAULT JOBS");

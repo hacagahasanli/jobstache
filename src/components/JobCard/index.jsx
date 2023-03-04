@@ -4,32 +4,28 @@ import { jobDescShorter, setSalaryDetail, animateCards } from '../../utils';
 import { fieldsDefaultValues, countries, defaultJobs } from '../../constants';
 import getJobsApi, { useSetJobDetailsQuery } from '../../client';
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { animated } from "react-spring";
 import { JobDetailModal } from '../Modal';
 import { StyledLogo } from '../styled-components';
+import { setJobDetail, showModal } from '../../store/slices';
 
 const { Title, Subtitle, Text, Body } = Card;
 let jobDescription, salary, location, descLength = 120;
 
 export const JobCard = ({ jobs }) => {
-    const [detail, setJobDetail] = useState({});
-    const [show, setShow] = useState(false);
+    const dispatch = useDispatch();
+    const { isVisible } = useSelector(state => state.job)
 
-    const handleShowModal = useCallback(() => {
-        setShow(false)
-        setTimeout(() => setJobDetail({}), 300)
-    }, [])
-
-    const handleJobDetail = (jobDetail) => {
-        setJobDetail(jobDetail)
-        setShow(true)
+    const handleJobDetail = async (jobDetail) => {
+        await dispatch(setJobDetail(jobDetail))
+        await dispatch(showModal(true))
     }
 
     const trail = animateCards(jobs)
 
     return <>
-        <JobDetailModal {...{ handleShowModal, detail, show }} />
+        <JobDetailModal show={isVisible} />
         {
             trail?.map((style, index) => {
                 const {

@@ -54,13 +54,9 @@ const empTypes = [
 export const Sidebard = ({ getSearchedPosts }) => {
     const dispatch = useDispatch()
     const { searchValue } = useSelector(state => state.job)
-    const [active, setActive] = useState({
-        exp: "",
-        emp: ""
-    });
+    const [active, setActive] = useState({ exp: "", emp: "" });
 
     const seem = window.innerWidth > 968;
-    console.log(searchValue, "SEARCH VALUE")
 
     useEffect(() => {
         const setDatas = async () => {
