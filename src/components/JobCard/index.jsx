@@ -22,7 +22,7 @@ export const JobCard = ({ jobs }) => {
         await dispatch(showModal(true))
     }
 
-    const trail = animateCards(jobs)
+    const trail = animateCards(jobs ?? [])
 
     return <>
         <JobDetailModal show={isVisible} />

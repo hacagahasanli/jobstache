@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux"
 import styled from "styled-components"
 import { showModal } from "../../store/slices"
 import { StyledLogo } from "../styled-components"
+import { v4 } from "uuid"
 
 const { Header, Body } = Modal
 
@@ -30,9 +31,7 @@ export const JobDetailModal = ({ show = false }) => {
         employer_website,
         job_highlights
     } = jobDetail
-    const joBHandler = (job) => {
-        // JSON.stringify(job).split('').map((item) => console.log(item));
-    }
+
     return <DetailModal size="lg" show={show} onHide={hideModal} >
         <DetailHeader closeButton>
             <StyledLogo src={employer_logo} alt="employe_logo" />
@@ -45,13 +44,12 @@ export const JobDetailModal = ({ show = false }) => {
         <Body style={{ padding: 0 }}>
             <JobDetail>{job_description}</JobDetail>
             <Qualification>
-                <h2>Qualifications</h2>
-                {job_highlights?.Qualifications?.map((item) => <QualificationItem>• {`${item}`}</QualificationItem>)}
+                {job_highlights?.Qualifications && <h2>Qualifications</h2>}
+                {job_highlights?.Qualifications?.map((item) => <QualificationItem key={v4()}>• {`${item}`}</QualificationItem>)}
             </Qualification>
-            <JobDetail>{job_description}</JobDetail>
             <Qualification>
-                <h2>Responsibilities</h2>
-                {job_highlights?.Responsibilities?.map((item) => <QualificationItem>• {`${item}`}</QualificationItem>)}
+                {job_highlights?.Responsibilities && <h2>Responsibilities</h2>}
+                {job_highlights?.Responsibilities?.map((item) => <QualificationItem key={v4()}>• {`${item}`}</QualificationItem>)}
             </Qualification>
             <Button variant="primary" style={{ marginTop: "2rem" }}>
                 <a href={job_apply_link} style={{ textDecoration: "none", color: "#ffffff", fontWeight: "600" }}>
@@ -67,21 +65,25 @@ const Qualification = styled.div`
     font-family: 'Golos Text', sans-serif;
 
     h2 {
-        margin-top: .5rem;
+        margin: 1rem 0;
         font-size: 1.5rem;
         color:#3282BB;
+        font-weight: 700;
+
     }
 `
 
 const QualificationItem = styled.span`
-    color:#ABACAF;
+    color:#ffffff;
     font-size: 1.1rem;
     font-weight: 500;
+    opacity: 0.9;
 
 `
 
 const JobDetail = styled.pre`
-    color:#ABACAF;
+    color:#ffffff;
+    opacity: 0.9;
     white-space: pre-wrap;
     margin: .8rem 0 0 0;
     word-wrap: break-word;

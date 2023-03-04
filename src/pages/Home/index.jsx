@@ -12,8 +12,9 @@ export default function Home() {
     // const [getSearchedPosts, { isLoading, isFetching, isError, data: jobs, error }] = getJobsApi.endpoints.getSearchedPosts.useLazyQuery()
 
     // useEffect(() => {
-    //     getSearchedPosts({query = "Software Developer", num_pages = 2, job_requirements = "", employment_types = ""})
+    //     getSearchedPosts({ query: "Software Developer", num_pages: 2, job_requirements: "", employment_types: "" })
     // }, [])
+
     const getSearchedPosts = () => { }
     const isLoading = false, isFetching = false;
     const loadedComponent = (isLoading || isFetching) ? <JobSpinner /> : <JobDatas jobs={defaultJobs} />;
