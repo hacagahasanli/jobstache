@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Col } from "react-bootstrap"
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components"
 import { setRequirements } from "../../store/slices";
 
@@ -51,15 +51,24 @@ const empTypes = [
 
 ]
 
-export const Sidebard = () => {
+export const Sidebard = ({ getSearchedPosts }) => {
     const dispatch = useDispatch()
+    const { searchValue } = useSelector(state => state.job)
     const [active, setActive] = useState({
         exp: "",
         emp: ""
     });
 
+    const seem = window.innerWidth > 968;
+    console.log(searchValue, "SEARCH VALUE")
+
     useEffect(() => {
-        dispatch(setRequirements(active))
+        const setDatas = async () => {
+            const { emp, exp } = active;
+            await dispatch(setRequirements(active))
+            await getSearchedPosts({ query: searchValue, num_pages: 2, job_requirements: exp, employment_types: emp })
+        }
+        setDatas()
     }, [active])
 
     const activeExpHandler = (type, name) => {
@@ -68,16 +77,16 @@ export const Sidebard = () => {
         )
     }
 
-    return <Column xs={2} >
+    return <Column xs={2}>
         <ExtraDetailsContainer>
-            <h5>Requirements</h5>
-            <ReqType>Expreinces</ReqType>
+            {seem && <h5>Requirements</h5>}
+            {seem && <ReqType>Expreinces</ReqType>}
             <div>
                 {expLevels?.map(({ id, type, value }) => (
                     <ExpTag active={active?.exp === type} key={id} onClick={() => activeExpHandler(type, "exp")}>{value}</ExpTag>
                 ))}
             </div>
-            <ReqType>Employer type</ReqType>
+            {seem && <ReqType>Employer type</ReqType>}
             <div>
                 {empTypes?.map(({ id, type, value }) => (
                     <ExpTag active={active?.emp === type} key={id} onClick={() => activeExpHandler(type, "emp")}>{value}</ExpTag>
@@ -112,6 +121,18 @@ const ExtraDetailsContainer = styled.div`
         display: flex;
         gap:0.3rem;
         flex-wrap: wrap;
+
+        @media screen and (max-width: 968px) {
+            display: flex !important;
+        }
+    }
+
+     @media screen and (max-width: 968px) {
+        display: flex !important;
+        flex-direction: row;
+        padding: 0 0.2rem;
+        width: 100%;
+        max-height: 4rem;
     }
 `
 
@@ -123,6 +144,11 @@ const ExpTag = styled.span`
     font-weight: 600;
     border-radius: 4px;
     cursor: pointer;
+
+    @media screen and (max-width: 968px) {
+        font-size: 0.58rem;
+        max-height:1.6rem !important;
+    }
 `
 
 const Column = styled(Col)`
@@ -131,4 +157,8 @@ const Column = styled(Col)`
     border-radius: 10px;
     max-height: 20rem;
     border: 1px solid #2b6690;
+
+     @media screen and (max-width: 968px) {
+        width: 100%;
+    }
 `

@@ -27,11 +27,17 @@ const TinyInfo = styled.span`
     font-size: smaller;
     font-weight: 600;
     color:#8c8a8a ;
+
+    @media screen and (max-width: 968px) {
+        font-size: .6rem;
+    }
     /* ${({ theme }) => theme.colors.whiteBlue} */
 `
 const LandingContainer = styled(Stack)`
     color: ${({ theme }) => theme.colors.whiteBlue};
     margin-bottom: 4rem;
+
+    
 `
 const DetailsContainer = styled.div`
     display: flex;
@@ -44,7 +50,12 @@ const DetailsContainer = styled.div`
         display: block;
         width: 30%;
         text-align: center;
-        color: ${({ theme }) => theme.colors.whiteBlue};;
+        color: ${({ theme }) => theme.colors.whiteBlue};
+
+        @media screen and (max-width: 968px) {
+            min-width:100%;
+            font-size:0.9rem;
+        }
     }
 
     h2{
@@ -53,5 +64,11 @@ const DetailsContainer = styled.div`
         span{
             color:${({ theme }) => theme.colors.lightBlue}
         }
+         @media screen and (max-width: 968px) {
+            min-width:100%;
+            font-size:1.4rem;
+            text-align: center;
+        }
     }
+    
 `

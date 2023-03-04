@@ -16,7 +16,7 @@ export const Input = ({ getSearchedPosts }) => {
         dispatch(setSearchedValue(inputValue))
         if (Object.entries(requirements).length) {
             const { emp, exp } = requirements
-            getSearchedPosts(inputValue, 1, exp, emp)
+            getSearchedPosts({ query: inputValue, num_pages: 2, job_requirements: exp, employment_types: emp })
         }
     }
 
@@ -44,6 +44,11 @@ const StyledControl = styled(Control)`
         font-size: smaller;
     }
 
+    @media screen and (max-width: 968px) {
+        max-width: 100%;
+        
+      }
+
 `
 const GotItButton = styled(Button)`
     background-color: ${({ theme }) => theme.colors.lightBlue};
@@ -52,5 +57,12 @@ const GotItButton = styled(Button)`
     font-size: .9rem;
     font-weight: 700;
     padding: .6rem 1.4rem;
+
+      @media screen and (max-width: 968px) {
+        max-width: 8rem;
+        height: max-content;
+        padding: .6rem .4rem;
+        font-size: .78rem;
+      }
 
 `

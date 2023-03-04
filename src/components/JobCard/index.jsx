@@ -5,6 +5,7 @@ import { fieldsDefaultValues, countries, defaultJobs } from '../../constants';
 import getJobsApi, { useSetJobDetailsQuery } from '../../client';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import { useTrail, animated } from "react-spring";
 
 const { Title, Subtitle, Text, Body } = Card;
 let jobDescription, salary, location, descLength = 120;
@@ -13,14 +14,21 @@ export const JobCard = ({ jobs }) => {
     // const {} = useSelector(state => state.job)
     // const { data: jobs, isError, error, isLoading } = useSetJobDetailsQuery(jobsData)
     // setJobDetails(job_id)
+    const trail = useTrail(jobs?.length, {
+        from: { opacity: 0, transform: "translate3d(0, 30px, 0)" },
+        to: { opacity: 1, transform: "translate3d(0, 0, 0)" },
+        config: { mass: 1, tension: 500, friction: 35 },
+        delay: 300,
+    });
     const handler = (job_id) => {
 
     }
 
     return <>
         {
-            jobs?.map((
-                { job_title,
+            trail?.map((style, index) => {
+                const {
+                    job_title,
                     job_id,
                     employer_name,
                     job_description,
@@ -31,7 +39,7 @@ export const JobCard = ({ jobs }) => {
                     job_state,
                     job_city,
                     job_salary_period
-                }) => {
+                } = jobs[index]
 
                 jobDescription = job_description;
                 salary = fieldsDefaultValues?.UN_DISCLOSED;
@@ -42,6 +50,7 @@ export const JobCard = ({ jobs }) => {
                 if (job_country) location = countries[job_country] ?? job_country
 
                 return (
+                    <animated.div key={job_id} style={style}>
                     <StyledCard onClick={() => handler(job_id)} key={job_id} className="mb-3">
                         <Body>
                             <StyledTitle>{job_title}</StyledTitle>
@@ -63,6 +72,7 @@ export const JobCard = ({ jobs }) => {
                             </FooterDetails>
                         </Body>
                     </StyledCard>
+                    </animated.div>
                 )
             })
         }

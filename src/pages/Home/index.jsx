@@ -12,30 +12,34 @@ export default function Home() {
     // const [getSearchedPosts, { isLoading, isFetching, isError, data: jobs, error }] = getJobsApi.endpoints.getSearchedPosts.useLazyQuery()
 
     // useEffect(() => {
-    //     getSearchedPosts()
+    //     getSearchedPosts({query = "Software Developer", num_pages = 2, job_requirements = "", employment_types = ""})
     // }, [])
-    const loadedComponent = (isLoading || isFetching) ? <JobSpinner /> : <JonDatas jobs={jobs?.data} />;
+    const getSearchedPosts = () => { }
+    const isLoading = false, isFetching = false;
+    const loadedComponent = (isLoading || isFetching) ? <JobSpinner /> : <JonDatas jobs={defaultJobs} />;
 
     return (
         <>
             <Container >
                 <BackroundImage src={image} alt="sadsa" />
                 <Header />
-                <Container>
+                <StyledContainer>
                     <Row className="justify-content-md-center">
                         <Col>
                             <LandingIntro {...{ getSearchedPosts }} />
                         </Col>
                     </Row>
-                    <Row>
-                        <Sidebard />
+                    <BodyContainer>
+                        <Sidebard {...{ getSearchedPosts }} />
                         {loadedComponent}
-                    </Row>
-                </Container>
+                    </BodyContainer>
+                </StyledContainer>
             </Container>
         </>
     )
 }
+
+
 
 const JonDatas = ({ jobs }) => {
     return <>
@@ -54,6 +58,16 @@ const JobSpinner = () => {
         <LoadingSpinner animation="grow" />
     </SpinnerContainer >
 }
+
+const StyledContainer = styled(Container)``
+
+const BodyContainer = styled(Row)`
+     @media screen and (max-width: 968px) {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+  }
+`
 
 const LoadingSpinner = styled(Spinner)`
     background: white;
@@ -92,6 +106,12 @@ const CardContainer = styled(Col)`
     column-gap: 0.9rem;
     grid-template-columns: 1fr 1fr;
     place-items: center;
+
+    @media screen and (max-width: 968px) {
+        grid-template-columns: 1fr;
+        width: 100%;
+
+  }
 `
 
 const BackroundImage = styled.img`
