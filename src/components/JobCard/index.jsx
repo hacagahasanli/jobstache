@@ -10,6 +10,7 @@ const { Title, Subtitle, Text, Body } = Card;
 let jobDescription, salary, location, descLength = 120;
 
 export const JobCard = ({ jobs }) => {
+    // const {} = useSelector(state => state.job)
     // const { data: jobs, isError, error, isLoading } = useSetJobDetailsQuery(jobsData)
     // setJobDetails(job_id)
     const handler = (job_id) => {

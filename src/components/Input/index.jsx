@@ -3,7 +3,6 @@ import { Button, Form, InputGroup } from "react-bootstrap"
 import { useDispatch, useSelector } from 'react-redux'
 import { useRef } from "react"
 import { setSearchedValue } from "../../store/slices"
-import getJobsApi from "../../client"
 
 const { Control } = Form
 

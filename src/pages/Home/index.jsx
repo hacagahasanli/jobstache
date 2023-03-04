@@ -8,13 +8,12 @@ import { defaultJobs } from '../../constants'
 import { Sidebard } from '../../shared'
 
 export default function Home() {
-    // const { data: jobs, isError, error, isLoading } = useGetSearchedPostsQuery()
-    const [getSearchedPosts, { isLoading, isFetching, isError, data: jobs, error }] = getJobsApi.endpoints.getSearchedPosts.useLazyQuery()
+    // const { data: jobsFirstLoad } = useGetSearchedPostsQuery()
+    // const [getSearchedPosts, { isLoading, isFetching, isError, data: jobs, error }] = getJobsApi.endpoints.getSearchedPosts.useLazyQuery()
 
     // useEffect(() => {
     //     getSearchedPosts()
     // }, [])
-
     const loadedComponent = (isLoading || isFetching) ? <JobSpinner /> : <JonDatas jobs={jobs?.data} />;
 
     return (
@@ -63,6 +62,8 @@ const LoadingSpinner = styled(Spinner)`
 `
 
 const SpinnerContainer = styled.div`
+    max-width: 100px;
+    margin: auto;
     display: flex;
     justify-content: center;
 `
@@ -105,13 +106,4 @@ const BackroundImage = styled.img`
 
 
 
-    // console.log(defaultJobs, "DEFAULT JOBS");
-    // const [show, setShow] = useState(false);
-
-    // const handleClose = () => setShow(false);
-    // const handleShow = () => setShow(true);
-    // <Modal show={show} onHide={handleClose}>
-    //     <Modal.Header closeButton>
-    //     </Modal.Header>
-    //     Hakdljadadk
-    // </Modal>
+// console.log(defaultJobs, "DEFAULT JOBS");
