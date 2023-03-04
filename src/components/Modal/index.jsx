@@ -28,7 +28,7 @@ export const JobDetailModal = ({ show = false }) => {
         employer_logo
     } = jobDetail
     const joBHandler = (job) => {
-        JSON.stringify(job).split('').map((item) => console.log(item));
+        // JSON.stringify(job).split('').map((item) => console.log(item));
     }
     return <DetailModal size="lg" show={show} onHide={hideModal} >
         <DetailHeader closeButton>
@@ -36,13 +36,23 @@ export const JobDetailModal = ({ show = false }) => {
             <h3>{job_title}</h3>
             <h6>{employer_name}</h6>
         </DetailHeader>
-        <Body style={{ padding: 0, margin: "2rem 0" }}>
-            {
-                joBHandler(job_description ?? [])
-            }
+        <Body style={{ padding: 0 }}>
+            <JobDetail>
+                {job_description}
+            </JobDetail>
         </Body>
     </DetailModal>
 }
+
+const JobDetail = styled.pre`
+    color:#cfcfcf;
+    white-space: pre-wrap;
+    margin: 1rem 0 0 0;
+    word-wrap: break-word;
+    line-height: 0.8rem;
+    font-weight: 600;
+    overflow: hidden;
+`
 
 const DetailModal = styled(Modal)`
     background-color: rgb(0,0,0,0.6);
