@@ -38,7 +38,7 @@ export const JobDetailModal = ({ show = false }) => {
             <StyledLogo src={employer_logo} alt="employe_logo" />
             <h3>{job_title}</h3>
             <div>
-                <h6>{employer_name}</h6>
+                <h5>{employer_name}</h5>
                 {employer_website && <a href={employer_website} style={{ color: "#3282BB" }}>{employer_website}</a>}
             </div>
         </DetailHeader>
@@ -124,7 +124,7 @@ const DetailHeader = styled(Header)`
       color:  ${({ theme }) => theme.colors.whiteBlue};
     }
 
-   h6{
+   h5{
      padding: 0;
      margin: 0;
      color: ${({ theme }) => theme.colors.lightBlue};
