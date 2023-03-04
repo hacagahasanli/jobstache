@@ -12,16 +12,21 @@ const { Title, Subtitle, Text, Body } = Card;
 let jobDescription, salary, location, descLength = 120;
 
 export const JobCard = ({ jobs }) => {
-    const [show, setShow] = useState(false);
+    const [detail, setJobDetail] = useState({});
 
-    const handeShowModal = useCallback(() => {
-        setShow(false)
+    const handleShowModal = useCallback(() => {
+        setJobDetail({})
     }, [])
+
+    const handleJobDetail = (jobDetail) => {
+        console.log(jobDetail, "JOB DETAILS")
+        setJobDetail(jobDetail)
+    }
 
     const trail = animateCards(jobs)
 
     return <>
-        <JobDetailModal {...{ handeShowModal, show }} />
+        <JobDetailModal {...{ handleShowModal, detail }} />
         {
             trail?.map((style, index) => {
                 const {
@@ -48,7 +53,7 @@ export const JobCard = ({ jobs }) => {
 
                 return (
                     <animated.div key={job_id} style={style}>
-                        <StyledCard onClick={() => setShow(true)} key={job_id} className="mb-3">
+                        <StyledCard onClick={() => handleJobDetail(jobs[index])} key={job_id} className="mb-3">
                             <Body>
                                 <StyledTitle>{job_title}</StyledTitle>
                                 <StyledSubTitle className="mb-2">{employer_name}</StyledSubTitle>
