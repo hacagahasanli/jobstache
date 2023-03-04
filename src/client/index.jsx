@@ -9,25 +9,27 @@ const BASE_URL = import.meta.env.VITE_BASE_URL
 export const getJobsApi = createApi({
     reducerPath: "getJobsApi",
     baseQuery: fetchBaseQuery({
-        // baseUrl: BASE_URL,
+        baseUrl: BASE_URL,
         prepareHeaders: (headers) => {
             headers.set(Rapid_API_Key, Rapid_Key_Value)
             headers.set(Rapid_API_Host, Rapid_API_Host_Value)
             return headers;
         }
     }),
+    tagTypes: ['Jobs'],
     endpoints: (builder) => ({
         getSearchedPosts: builder.query({
-            query: (query = "Front End Developer in India", num_pages = 1, job_requirements = "", employment_types = "") => {
+            query: (query = "Software Developer", num_pages = 1, job_requirements = "", employment_types = "") => {
                 if (job_requirements && employment_types) return `/search?query=${query}&num_pages=${num_pages}&employment_types=${employment_types}&job_requirements=${job_requirements}`
                 if (job_requirements) return `/search?query=${query}&num_pages=${num_pages}&job_requirements=${job_requirements}`
                 if (employment_types) return `/search?query=${query}&num_pages=${num_pages}&employment_types=${employment_types}`
                 return `/search?query=${query}&num_pages=${num_pages}`
-            }
+            },
+            providesTags: ['Jobs'],
         }),
         setJobDetails: builder.query({
-            query: (job_id) => `/job-details?job_id=${job_id}`
-
+            query: (job_id) => `/job-details?job_id=${job_id}`,
+            providesTags: ['Jobs'],
         })
     })
 })

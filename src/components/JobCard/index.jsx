@@ -4,12 +4,12 @@ import { jobDescShorter, setSalaryDetail } from '../../utils';
 import { fieldsDefaultValues, countries, defaultJobs } from '../../constants';
 import getJobsApi, { useSetJobDetailsQuery } from '../../client';
 import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 
 const { Title, Subtitle, Text, Body } = Card;
-let jobDescription, salary, location, descLength = 130;
+let jobDescription, salary, location, descLength = 120;
 
 export const JobCard = ({ jobs }) => {
-    // const [setJobDetails, { isLoading, isError, data, error }] = getJobsApi.endpoints.setJobDetails.useLazyQuery()
     // const { data: jobs, isError, error, isLoading } = useSetJobDetailsQuery(jobsData)
     // setJobDetails(job_id)
     const handler = (job_id) => {

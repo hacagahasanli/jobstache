@@ -1,32 +1,21 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import image from "../../assets/svgs/brands.svg"
 import { Button, Col, Container, Modal, Row, Spinner } from 'react-bootstrap'
-import { useGetSearchedPostsQuery } from '../../client'
+import getJobsApi, { useGetSearchedPostsQuery } from '../../client'
 import { Header, LandingIntro, JobCard } from '../../components'
 import { defaultJobs } from '../../constants'
 import { Sidebard } from '../../shared'
 
-
-
 export default function Home() {
-    const isLoading = true;
-    // const jobs = defaultJobs;
     // const { data: jobs, isError, error, isLoading } = useGetSearchedPostsQuery()
-    // console.log(defaultJobs, "DEFAULT JOBS");
-    // const [show, setShow] = useState(false);
+    const [getSearchedPosts, { isLoading, isFetching, isError, data: jobs, error }] = getJobsApi.endpoints.getSearchedPosts.useLazyQuery()
 
-    // const handleClose = () => setShow(false);
-    // const handleShow = () => setShow(true);
-    // <Modal show={show} onHide={handleClose}>
-    //     <Modal.Header closeButton>
+    // useEffect(() => {
+    //     getSearchedPosts()
+    // }, [])
 
-    //     </Modal.Header>
-    //     Hakdljadadk
-    // </Modal>
-    const spinner = isLoading && <SpinnerContainer>
-        <LoadingSpinner animation="grow" />
-    </SpinnerContainer>
+    const loadedComponent = (isLoading || isFetching) ? <JobSpinner /> : <JonDatas jobs={jobs?.data} />;
 
     return (
         <>
@@ -36,25 +25,35 @@ export default function Home() {
                 <Container>
                     <Row className="justify-content-md-center">
                         <Col>
-                            <LandingIntro />
+                            <LandingIntro {...{ getSearchedPosts }} />
                         </Col>
                     </Row>
                     <Row>
-                        {spinner}
-                        {!isLoading && <Sidebard />}
-                        {!isLoading &&
-                            <CardContainer xs={10}>
-                                <JobCard jobs={defaultJobs} />
-                            </CardContainer>
-                        }
-                        <StyledCol>
-                            {!isLoading && <UploadMore variant="primary">Load more</UploadMore>}
-                        </StyledCol>
+                        <Sidebard />
+                        {loadedComponent}
                     </Row>
-                </Container>                                                                            
+                </Container>
             </Container>
         </>
     )
+}
+
+const JonDatas = ({ jobs }) => {
+    return <>
+        <CardContainer xs={10}>
+            <JobCard {...{ jobs }} />
+        </CardContainer>
+        <StyledCol>
+            <UploadMore variant="primary">Load more</UploadMore>
+        </StyledCol>
+    </>
+
+}
+
+const JobSpinner = () => {
+    return <SpinnerContainer >
+        <LoadingSpinner animation="grow" />
+    </SpinnerContainer >
 }
 
 const LoadingSpinner = styled(Spinner)`
@@ -106,3 +105,13 @@ const BackroundImage = styled.img`
 
 
 
+    // console.log(defaultJobs, "DEFAULT JOBS");
+    // const [show, setShow] = useState(false);
+
+    // const handleClose = () => setShow(false);
+    // const handleShow = () => setShow(true);
+    // <Modal show={show} onHide={handleClose}>
+    //     <Modal.Header closeButton>
+    //     </Modal.Header>
+    //     Hakdljadadk
+    // </Modal>

@@ -2,7 +2,7 @@ import { Stack } from "react-bootstrap"
 import styled from "styled-components"
 import { Input } from "../Input"
 
-export const LandingIntro = () => {
+export const LandingIntro = ({ getSearchedPosts }) => {
     return (
         <LandingContainer gap={4} className="col-md-12 mx-auto">
             <DetailsContainer>
@@ -11,7 +11,7 @@ export const LandingIntro = () => {
                     so you find the job that's right for you.</p>
             </DetailsContainer>
             <div>
-                <Input />
+                <Input {...{ getSearchedPosts }} />
                 <TinyInfo>300+ developers already signed up!</TinyInfo>
             </div>
         </LandingContainer>

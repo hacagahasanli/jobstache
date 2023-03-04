@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Col } from "react-bootstrap"
+import { useDispatch } from "react-redux";
 import styled from "styled-components"
+import { setRequirements } from "../../store/slices";
 
 const expLevels = [
     {
@@ -35,7 +37,7 @@ const empTypes = [
         id: "part_time",
         type: "PARTTIME",
         value: "part-time"
-    }, 
+    },
     {
         id: "intern",
         type: "INTERN",
@@ -50,10 +52,15 @@ const empTypes = [
 ]
 
 export const Sidebard = () => {
-    const [{ exp, emp }, setActive] = useState({
+    const dispatch = useDispatch()
+    const [active, setActive] = useState({
         exp: "",
         emp: ""
     });
+
+    useEffect(() => {
+        dispatch(setRequirements(active))
+    }, [active])
 
     const activeExpHandler = (type, name) => {
         setActive((prev) => prev[name] === type ?
@@ -66,19 +73,15 @@ export const Sidebard = () => {
             <h5>Requirements</h5>
             <ReqType>Expreinces</ReqType>
             <div>
-                {
-                    expLevels?.map(({ id, type, value }) => (
-                        <ExpTag active={exp === type} key={id} onClick={() => activeExpHandler(type, "exp")}>{value}</ExpTag>
-                    ))
-                }
+                {expLevels?.map(({ id, type, value }) => (
+                    <ExpTag active={active?.exp === type} key={id} onClick={() => activeExpHandler(type, "exp")}>{value}</ExpTag>
+                ))}
             </div>
             <ReqType>Employer type</ReqType>
             <div>
-                {
-                    empTypes?.map(({ id, type, value }) => (
-                        <ExpTag active={emp === type} key={id} onClick={() => activeExpHandler(type, "emp")}>{value}</ExpTag>
-                    ))
-                }
+                {empTypes?.map(({ id, type, value }) => (
+                    <ExpTag active={active?.emp === type} key={id} onClick={() => activeExpHandler(type, "emp")}>{value}</ExpTag>
+                ))}
             </div>
         </ExtraDetailsContainer>
     </Column>
