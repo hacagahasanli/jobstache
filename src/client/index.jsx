@@ -18,11 +18,16 @@ export const getJobsApi = createApi({
     }),
     endpoints: (builder) => ({
         getSearchedPosts: builder.query({
-            query: (query = "Front End Developer in India", num_pages = 1) =>
-                `/search?query=${query}&num_pages=${num_pages}`
+            query: (query = "Front End Developer in India", num_pages = 1, job_requirements = "", employment_types = "") => {
+                if (job_requirements && employment_types) return `/search?query=${query}&num_pages=${num_pages}&employment_types=${employment_types}&job_requirements=${job_requirements}`
+                if (job_requirements) return `/search?query=${query}&num_pages=${num_pages}&job_requirements=${job_requirements}`
+                if (employment_types) return `/search?query=${query}&num_pages=${num_pages}&employment_types=${employment_types}`
+                return `/search?query=${query}&num_pages=${num_pages}`
+            }
         }),
         setJobDetails: builder.query({
             query: (job_id) => `/job-details?job_id=${job_id}`
+
         })
     })
 })

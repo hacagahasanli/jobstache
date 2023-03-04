@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Col } from "react-bootstrap"
 import styled from "styled-components"
 
-// under_3_years_experience, more_than_3_years_experience, no_experience, no_degree.
 const expLevels = [
     {
         id: "less3",
@@ -26,34 +25,31 @@ const expLevels = [
     },
 ]
 
-// FULLTIME, CONTRACTOR, PARTTIME, INTERN
-
 const empTypes = [
     {
         id: "full_time",
         type: "FULLTIME",
-        value: "fulltime"
+        value: "full-time"
     },
     {
-        id: "contractor",
-        type: "CONTRACTOR",
-        value: "contractor"
-    },
+        id: "part_time",
+        type: "PARTTIME",
+        value: "part-time"
+    }, 
     {
         id: "intern",
         type: "INTERN",
         value: "intern"
     },
     {
-        id: "part_time",
-        type: "PARTTIME",
-        value: "parttime"
+        id: "contractor",
+        type: "CONTRACTOR",
+        value: "contract"
     },
 
 ]
 
 export const Sidebard = () => {
-
     const [{ exp, emp }, setActive] = useState({
         exp: "",
         emp: ""
@@ -68,7 +64,7 @@ export const Sidebard = () => {
     return <Column xs={2} >
         <ExtraDetailsContainer>
             <h5>Requirements</h5>
-            <ReqType>expreinces</ReqType>
+            <ReqType>Expreinces</ReqType>
             <div>
                 {
                     expLevels?.map(({ id, type, value }) => (
@@ -76,7 +72,7 @@ export const Sidebard = () => {
                     ))
                 }
             </div>
-            <ReqType>employer type</ReqType>
+            <ReqType>Employer type</ReqType>
             <div>
                 {
                     empTypes?.map(({ id, type, value }) => (

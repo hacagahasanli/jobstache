@@ -1,17 +1,32 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import image from "../../assets/svgs/brands.svg"
-import { Button, Col, Container, Row } from 'react-bootstrap'
+import { Button, Col, Container, Modal, Row, Spinner } from 'react-bootstrap'
 import { useGetSearchedPostsQuery } from '../../client'
 import { Header, LandingIntro, JobCard } from '../../components'
 import { defaultJobs } from '../../constants'
 import { Sidebard } from '../../shared'
 
-export default function Home() {
 
+
+export default function Home() {
+    const isLoading = true;
     // const jobs = defaultJobs;
     // const { data: jobs, isError, error, isLoading } = useGetSearchedPostsQuery()
     // console.log(defaultJobs, "DEFAULT JOBS");
+    // const [show, setShow] = useState(false);
+
+    // const handleClose = () => setShow(false);
+    // const handleShow = () => setShow(true);
+    // <Modal show={show} onHide={handleClose}>
+    //     <Modal.Header closeButton>
+
+    //     </Modal.Header>
+    //     Hakdljadadk
+    // </Modal>
+    const spinner = isLoading && <SpinnerContainer>
+        <LoadingSpinner animation="grow" />
+    </SpinnerContainer>
 
     return (
         <>
@@ -25,19 +40,33 @@ export default function Home() {
                         </Col>
                     </Row>
                     <Row>
-                        <Sidebard />
-                        <CardContainer xs={10}>
-                            <JobCard jobs={defaultJobs} />
-                        </CardContainer>
+                        {spinner}
+                        {!isLoading && <Sidebard />}
+                        {!isLoading &&
+                            <CardContainer xs={10}>
+                                <JobCard jobs={defaultJobs} />
+                            </CardContainer>
+                        }
                         <StyledCol>
-                            <UploadMore variant="primary">Load more</UploadMore>
+                            {!isLoading && <UploadMore variant="primary">Load more</UploadMore>}
                         </StyledCol>
                     </Row>
-                </Container>
+                </Container>                                                                            
             </Container>
         </>
     )
 }
+
+const LoadingSpinner = styled(Spinner)`
+    background: white;
+    width: 60px;
+    height:60px;
+`
+
+const SpinnerContainer = styled.div`
+    display: flex;
+    justify-content: center;
+`
 
 const UploadMore = styled(Button)`
     background-color: ${({ theme }) => theme.colors.lightBlue};
