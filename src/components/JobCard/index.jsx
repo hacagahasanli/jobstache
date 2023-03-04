@@ -7,26 +7,29 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { animated } from "react-spring";
 import { JobDetailModal } from '../Modal';
+import { StyledLogo } from '../styled-components';
 
 const { Title, Subtitle, Text, Body } = Card;
 let jobDescription, salary, location, descLength = 120;
 
 export const JobCard = ({ jobs }) => {
     const [detail, setJobDetail] = useState({});
+    const [show, setShow] = useState(false);
 
     const handleShowModal = useCallback(() => {
-        setJobDetail({})
+        setShow(false)
+        setTimeout(() => setJobDetail({}), 300)
     }, [])
 
     const handleJobDetail = (jobDetail) => {
-        console.log(jobDetail, "JOB DETAILS")
         setJobDetail(jobDetail)
+        setShow(true)
     }
 
     const trail = animateCards(jobs)
 
     return <>
-        <JobDetailModal {...{ handleShowModal, detail }} />
+        <JobDetailModal {...{ handleShowModal, detail, show }} />
         {
             trail?.map((style, index) => {
                 const {
@@ -40,7 +43,8 @@ export const JobCard = ({ jobs }) => {
                     job_country,
                     job_state,
                     job_city,
-                    job_salary_period
+                    job_salary_period,
+                    employer_logo
                 } = jobs[index]
 
                 jobDescription = job_description;
@@ -55,8 +59,13 @@ export const JobCard = ({ jobs }) => {
                     <animated.div key={job_id} style={style}>
                         <StyledCard onClick={() => handleJobDetail(jobs[index])} key={job_id} className="mb-3">
                             <Body>
-                                <StyledTitle>{job_title}</StyledTitle>
-                                <StyledSubTitle className="mb-2">{employer_name}</StyledSubTitle>
+                                <BodyHeader>
+                                    <div>
+                                        <StyledTitle>{job_title}</StyledTitle>
+                                        <StyledSubTitle className="mb-2">{employer_name}</StyledSubTitle>
+                                    </div>
+                                    <StyledLogo src={employer_logo} alt="employer_logo" />
+                                </BodyHeader>
                                 <StyledText>{jobDescription}</StyledText>
                                 <FooterDetails>
                                     <SingleDetail>
@@ -81,6 +90,10 @@ export const JobCard = ({ jobs }) => {
     </>
 }
 
+const BodyHeader = styled.div`
+    display:flex;
+    justify-content: space-between;
+`
 const forcedCardStyle = css`
     font-weight: 600; 
     cursor: pointer ;
