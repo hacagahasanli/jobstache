@@ -1,30 +1,27 @@
 import Card from 'react-bootstrap/Card';
 import styled, { css } from 'styled-components';
-import { jobDescShorter, setSalaryDetail } from '../../utils';
+import { jobDescShorter, setSalaryDetail, animateCards } from '../../utils';
 import { fieldsDefaultValues, countries, defaultJobs } from '../../constants';
 import getJobsApi, { useSetJobDetailsQuery } from '../../client';
-import { useEffect } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { useTrail, animated } from "react-spring";
+import { animated } from "react-spring";
+import { JobDetailModal } from '../Modal';
 
 const { Title, Subtitle, Text, Body } = Card;
 let jobDescription, salary, location, descLength = 120;
 
 export const JobCard = ({ jobs }) => {
-    // const {} = useSelector(state => state.job)
-    // const { data: jobs, isError, error, isLoading } = useSetJobDetailsQuery(jobsData)
-    // setJobDetails(job_id)
-    const trail = useTrail(jobs?.length, {
-        from: { opacity: 0, transform: "translate3d(0, 30px, 0)" },
-        to: { opacity: 1, transform: "translate3d(0, 0, 0)" },
-        config: { mass: 1, tension: 500, friction: 35 },
-        delay: 300,
-    });
-    const handler = (job_id) => {
+    const [show, setShow] = useState(false);
 
-    }
+    const handeShowModal = useCallback(() => {
+        setShow(false)
+    }, [])
+
+    const trail = animateCards(jobs)
 
     return <>
+        <JobDetailModal {...{ handeShowModal, show }} />
         {
             trail?.map((style, index) => {
                 const {
@@ -51,27 +48,27 @@ export const JobCard = ({ jobs }) => {
 
                 return (
                     <animated.div key={job_id} style={style}>
-                    <StyledCard onClick={() => handler(job_id)} key={job_id} className="mb-3">
-                        <Body>
-                            <StyledTitle>{job_title}</StyledTitle>
-                            <StyledSubTitle className="mb-2">{employer_name}</StyledSubTitle>
-                            <StyledText>{jobDescription}</StyledText>
-                            <FooterDetails>
-                                <SingleDetail>
-                                    <span className="material-symbols-rounded" style={{ fontSize: "1rem", color: "#FFD43B", fontWeight: "600" }}>
-                                        location_on
-                                    </span>
-                                    <Text>{location}</Text>
-                                </SingleDetail>
-                                <SingleDetail>
-                                    <span className="material-symbols-rounded" style={{ fontSize: "1rem", color: "#529f61", fontWeight: "600" }}>
-                                        monetization_on
-                                    </span>
-                                    <Text>{salary}</Text>
-                                </SingleDetail>
-                            </FooterDetails>
-                        </Body>
-                    </StyledCard>
+                        <StyledCard onClick={() => setShow(true)} key={job_id} className="mb-3">
+                            <Body>
+                                <StyledTitle>{job_title}</StyledTitle>
+                                <StyledSubTitle className="mb-2">{employer_name}</StyledSubTitle>
+                                <StyledText>{jobDescription}</StyledText>
+                                <FooterDetails>
+                                    <SingleDetail>
+                                        <span className="material-symbols-rounded" style={{ fontSize: "1rem", color: "#FFD43B", fontWeight: "600" }}>
+                                            location_on
+                                        </span>
+                                        <Text>{location}</Text>
+                                    </SingleDetail>
+                                    <SingleDetail>
+                                        <span className="material-symbols-rounded" style={{ fontSize: "1rem", color: "#529f61", fontWeight: "600" }}>
+                                            monetization_on
+                                        </span>
+                                        <Text>{salary}</Text>
+                                    </SingleDetail>
+                                </FooterDetails>
+                            </Body>
+                        </StyledCard>
                     </animated.div>
                 )
             })

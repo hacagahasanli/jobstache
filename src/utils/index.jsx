@@ -1,1 +1,1 @@
-export { setSalaryDetail, jobDescShorter } from "./cards";
+export { setSalaryDetail, jobDescShorter, animateCards } from "./cards";
