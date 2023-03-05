@@ -92,6 +92,14 @@ const UploadMore = styled(Button)`
     padding: .6rem 1.9rem;
     transform: translateX(83%);
     cursor: pointer !important;
+
+    @media screen and (max-width: 968px) {
+        transform: translateX(0%);
+        padding: .5rem 1.4rem;
+        font-weight: 700;
+        font-size: .8rem;
+
+    }
     
 `
 

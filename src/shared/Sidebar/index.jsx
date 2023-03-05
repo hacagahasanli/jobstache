@@ -142,7 +142,7 @@ const ExpTag = styled.span`
     cursor: pointer;
 
     @media screen and (max-width: 968px) {
-        font-size: 0.58rem;
+        font-size: 0.68rem;
         max-height:1.6rem !important;
     }
 `
