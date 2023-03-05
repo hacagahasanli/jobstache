@@ -155,6 +155,8 @@ const Column = styled(Col)`
     border: 1px solid #2b6690;
 
      @media screen and (max-width: 968px) {
-        width: 100%;
+        width: 95%;
+        margin: 0 auto;
+        margin-bottom: 1rem;
     }
 `

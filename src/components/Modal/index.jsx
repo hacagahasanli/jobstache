@@ -16,16 +16,8 @@ export const JobDetailModal = ({ show = false }) => {
 
     const {
         job_title,
-        job_id,
         employer_name,
         job_description,
-        job_min_salary,
-        job_max_salary,
-        job_salary_currency,
-        job_country,
-        job_state,
-        job_city,
-        job_salary_period,
         employer_logo,
         job_apply_link,
         employer_website,
