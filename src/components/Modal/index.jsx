@@ -24,6 +24,17 @@ export const JobDetailModal = ({ show = false }) => {
         job_highlights
     } = jobDetail
 
+    const jobHighlights = [
+        {
+            id: "qualification",
+            subValue: "Qualifications"
+        },
+        {
+            id: "responsibilities",
+            subValue: "Responsibilities"
+        },
+    ]
+
     return <DetailModal size="lg" show={show} onHide={hideModal} >
         <DetailHeader closeButton>
             <StyledLogo src={employer_logo} alt="employe_logo" />
@@ -35,14 +46,13 @@ export const JobDetailModal = ({ show = false }) => {
         </DetailHeader>
         <Body style={{ padding: 0 }}>
             <JobDetail>{job_description}</JobDetail>
-            <Qualification>
-                {job_highlights?.Qualifications && <h2>Qualifications</h2>}
-                {job_highlights?.Qualifications?.map((item) => <QualificationItem key={v4()}>• {`${item}`}</QualificationItem>)}
-            </Qualification>
-            <Qualification>
-                {job_highlights?.Responsibilities && <h2>Responsibilities</h2>}
-                {job_highlights?.Responsibilities?.map((item) => <QualificationItem key={v4()}>• {`${item}`}</QualificationItem>)}
-            </Qualification>
+            {
+                jobHighlights.map(({ id, subValue }) => <Qualification key={id}>
+                    {job_highlights[subValue] && <h2>{subValue}</h2>}
+                    {job_highlights[subValue]?.map((item) => <QualificationItem key={v4()}>• {`${item}`}</QualificationItem>)}
+                </Qualification>
+                )
+            }
             <ApplyNow variant="primary">
                 <a href={job_apply_link} style={{ textDecoration: "none", color: "#ffffff", fontWeight: "600" }}>
                     Apply now
