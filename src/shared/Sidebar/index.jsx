@@ -158,5 +158,9 @@ const Column = styled(Col)`
         width: 95%;
         margin: 0 auto;
         margin-bottom: 1rem;
+        &:hover{
+            scale:1.02;
+            cursor:pointer;
+        }
     }
 `
