@@ -8,6 +8,18 @@ import { v4 } from "uuid"
 
 const { Header, Body } = Modal
 
+const jobHighlights = [
+    {
+        id: "qualification",
+        subValue: "Qualifications"
+    },
+    {
+        id: "responsibilities",
+        subValue: "Responsibilities"
+    },
+]
+
+
 export const JobDetailModal = ({ show = false }) => {
     const dispatch = useDispatch();
     const { jobDetail } = useSelector(state => state.job)
@@ -23,17 +35,6 @@ export const JobDetailModal = ({ show = false }) => {
         employer_website,
         job_highlights
     } = jobDetail
-
-    const jobHighlights = [
-        {
-            id: "qualification",
-            subValue: "Qualifications"
-        },
-        {
-            id: "responsibilities",
-            subValue: "Responsibilities"
-        },
-    ]
 
     return <DetailModal size="lg" show={show} onHide={hideModal} >
         <DetailHeader closeButton>

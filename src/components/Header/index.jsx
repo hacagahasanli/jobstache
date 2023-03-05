@@ -29,6 +29,7 @@ const StyledHeader = styled.header`
 
     @media screen and (max-width: 968px) {
         min-height: 4.2rem;
+        margin-bottom: 2.5rem;
         div{
            img:first-child{
                 width: 35px;

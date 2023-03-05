@@ -46,8 +46,7 @@ const StyledControl = styled(Control)`
 
     @media screen and (max-width: 968px) {
         max-width: 100%;
-        
-      }
+    }
 
 `
 const GotItButton = styled(Button)`

@@ -46,6 +46,10 @@ const DetailsContainer = styled.div`
     align-items: center;
     margin-bottom:2rem;
 
+    @media screen and (max-width: 968px) {
+         margin-bottom:0rem;
+    }
+    
     p{
         display: block;
         width: 30%;
