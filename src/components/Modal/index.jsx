@@ -43,14 +43,23 @@ export const JobDetailModal = ({ show = false }) => {
                 {job_highlights?.Responsibilities && <h2>Responsibilities</h2>}
                 {job_highlights?.Responsibilities?.map((item) => <QualificationItem key={v4()}>• {`${item}`}</QualificationItem>)}
             </Qualification>
-            <Button variant="primary" style={{ marginTop: "2rem" }}>
+            <ApplyNow variant="primary">
                 <a href={job_apply_link} style={{ textDecoration: "none", color: "#ffffff", fontWeight: "600" }}>
                     Apply now
                 </a>
-            </Button>
+            </ApplyNow>
         </Body>
     </DetailModal>
 }
+
+const ApplyNow = styled(Button)`
+    margin-top: 2rem;
+    @media screen and (max-width: 968px) {
+        font-size: .8rem;
+        width: 100%;
+    }
+
+`
 const Qualification = styled.div`
     display: flex;
     flex-direction: column;
@@ -61,6 +70,9 @@ const Qualification = styled.div`
         font-size: 1.5rem;
         color:#3282BB;
         font-weight: 700;
+         @media screen and (max-width: 968px) {
+           font-size: 1.25rem;
+        }
 
     }
 `
@@ -99,6 +111,7 @@ const JobDetail = styled.pre`
 const DetailModal = styled(Modal)`
     background-color: rgb(0,0,0,0.6);
     font-family: 'Golos Text', sans-serif;
+
     .modal-content,.modal-header,.modal-dialog{
         background: transparent;
         border: 1px solid transparent;
@@ -108,6 +121,10 @@ const DetailModal = styled(Modal)`
         right: 1rem;
         top:1rem;
         background-color: #ffffff !important;
+        @media screen and (max-width: 968px) {
+           width: .9rem;
+           height: .8rem;
+        }
     }
 `
 
