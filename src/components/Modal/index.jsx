@@ -71,6 +71,10 @@ const QualificationItem = styled.span`
     font-weight: 500;
     opacity: 0.9;
 
+    @media screen and (max-width: 968px) {
+           font-size: .85rem;
+    }
+
 `
 
 const JobDetail = styled.pre`
@@ -82,9 +86,13 @@ const JobDetail = styled.pre`
     line-height: 0.98rem;
     font-weight: 500;
     font-size: 1.1rem;
-    tab-size: 21;
     overflow: hidden;
     font-family: 'Golos Text', sans-serif;
+     @media screen and (max-width: 968px) {
+          font-size: .8rem;
+          line-height: 0.8rem;
+    }
+
     /* &:hover, &:focus { width: min-content; } */
 `
 
@@ -116,11 +124,22 @@ const DetailHeader = styled(Header)`
       padding: 0;
       margin: 0;
       color:  ${({ theme }) => theme.colors.whiteBlue};
+      @media screen and (max-width: 968px) {
+           font-size: 1.1rem;
+      }
     }
 
    h5{
      padding: 0;
      margin: 0;
      color: ${({ theme }) => theme.colors.lightBlue};
+     @media screen and (max-width: 968px) {
+           font-size: 1rem;
+     }
+  }
+  a{
+    @media screen and (max-width: 968px) {
+        font-size: .9rem;
+    }
   }
 `
