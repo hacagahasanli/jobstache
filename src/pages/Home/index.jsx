@@ -98,7 +98,6 @@ const UploadMore = styled(Button)`
         padding: .5rem 1.4rem;
         font-weight: 700;
         font-size: .8rem;
-
     }
     
 `

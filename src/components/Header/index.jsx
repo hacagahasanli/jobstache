@@ -5,7 +5,7 @@ import { logojs, textlogo } from "../../assets"
 export const Header = () => {
     return <StyledHeader>
         <div>
-            <img src={logojs} alt="logojs" width={40} />
+            <img src={logojs} alt="logojs" />
             <img src={textlogo} alt="textlog" />
         </div>
     </StyledHeader>
@@ -13,7 +13,6 @@ export const Header = () => {
 }
 
 const StyledHeader = styled.header`
-
     width: 100%;
     min-height: 4.2rem;
     background: transparent;
@@ -26,5 +25,17 @@ const StyledHeader = styled.header`
         display: flex;
         align-items: center;
         gap:0.8rem;
+    }
+
+    @media screen and (max-width: 968px) {
+        min-height: 4.2rem;
+        div{
+           img:first-child{
+                width: 35px;
+           }
+           img:nth-child(2){
+                width: 90px;
+           }
+        }
     }
 `
