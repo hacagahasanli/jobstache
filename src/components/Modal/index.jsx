@@ -8,18 +8,6 @@ import { v4 } from "uuid"
 
 const { Header, Body } = Modal
 
-const jobHighlights = [
-    {
-        id: "qualification",
-        subValue: "Qualifications"
-    },
-    {
-        id: "responsibilities",
-        subValue: "Responsibilities"
-    },
-]
-
-
 export const JobDetailModal = ({ show = false }) => {
     const dispatch = useDispatch();
     const { jobDetail } = useSelector(state => state.job)
@@ -36,6 +24,17 @@ export const JobDetailModal = ({ show = false }) => {
         job_highlights
     } = jobDetail
 
+    const jobHighlights = [
+        {
+            id: "qualification",
+            subValue: "Qualifications"
+        },
+        {
+            id: "responsibilities",
+            subValue: "Responsibilities"
+        },
+    ]
+
     return <DetailModal size="lg" show={show} onHide={hideModal} >
         <DetailHeader closeButton>
             <StyledLogo src={employer_logo} alt="employe_logo" />
@@ -48,10 +47,18 @@ export const JobDetailModal = ({ show = false }) => {
         <Body style={{ padding: 0 }}>
             <JobDetail>{job_description}</JobDetail>
             {
-                jobHighlights.map(({ id, subValue }) => <Qualification key={id}>
-                    {job_highlights[subValue] && <h2>{subValue}</h2>}
-                    {job_highlights[subValue]?.map((item) => <QualificationItem key={v4()}>• {`${item}`}</QualificationItem>)}
-                </Qualification>
+                jobHighlights?.map(({ id, subValue }) => {
+                    try {
+                        const jobSubDetail = job_highlights[subValue] ?? "";
+                        if (jobSubDetail) {
+                            return <Qualification key={id}>
+                                {jobSubDetail && <h2>{subValue}</h2>}
+                                {jobSubDetail?.map((item) => <QualificationItem key={v4()}>• {`${item}`}</QualificationItem>)}
+                            </Qualification>
+                        }
+                    } catch (err) {
+                    }
+                }
                 )
             }
             <ApplyNow variant="primary">

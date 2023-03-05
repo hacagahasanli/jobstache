@@ -5,7 +5,7 @@ import { logojs, textlogo } from "../../assets"
 export const Header = () => {
     return <StyledHeader>
         <div>
-            <img src={logojs} alt="logojs" />
+            <img src={logojs} alt="logojs" width={40} />
             <img src={textlogo} alt="textlog" />
         </div>
     </StyledHeader>
