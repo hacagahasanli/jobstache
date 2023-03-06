@@ -2,8 +2,6 @@ import Card from 'react-bootstrap/Card';
 import styled, { css } from 'styled-components';
 import { jobDescShorter, setSalaryDetail, animateCards } from '../../utils';
 import { fieldsDefaultValues, countries, defaultJobs } from '../../constants';
-import getJobsApi, { useSetJobDetailsQuery } from '../../client';
-import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { animated } from "react-spring";
 import { JobDetailModal } from '../Modal';

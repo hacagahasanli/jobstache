@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import image from "../../assets/svgs/brands.svg"
-import { Button, Col, Container, Modal, Row, Spinner } from 'react-bootstrap'
+import { Button, Col, Container, Row, Spinner } from 'react-bootstrap'
 import getJobsApi, { useGetSearchedPostsQuery } from '../../client'
 import { Header, LandingIntro, JobCard } from '../../components'
 import { defaultJobs } from '../../constants'
@@ -15,8 +15,8 @@ export default function Home() {
     //     getSearchedPosts({ query: "Software Developer", num_pages: 2, job_requirements: "", employment_types: "" })
     // }, [])
 
-    // const getSearchedPosts = () => { }
-    // const isLoading = false, isFetching = false;
+    const getSearchedPosts = () => { }
+    const isLoading = false, isFetching = false, isError = false;
     const loadedComponent = (isLoading || isFetching) ? <JobSpinner /> : isError ? <h4>Something went wrong!</h4> : <JobDatas jobs={defaultJobs} />;
 
     return (
