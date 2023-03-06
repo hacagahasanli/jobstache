@@ -75,8 +75,11 @@ export const Sidebard = ({ getSearchedPosts }) => {
 
     return <Column xs={2}>
         <ExtraDetailsContainer>
-            {seem && <h5>Requirements</h5>}
-            {seem && <ReqType>Expreinces</ReqType>}
+            {seem && <>
+                <h5>Requirements</h5>
+                <ReqType>Expreinces</ReqType>
+            </>
+            }
             <div>
                 {expLevels?.map(({ id, type, value }) => (
                     <ExpTag active={active?.exp === type} key={id} onClick={() => activeExpHandler(type, "exp")}>{value}</ExpTag>
@@ -120,6 +123,11 @@ const ExtraDetailsContainer = styled.div`
 
         @media screen and (max-width: 968px) {
             display: flex !important;
+            flex-direction: column;
+        }
+        @media screen and (max-width: 453px) {
+            flex-wrap: wrap;
+            width: 100%;
         }
     }
 
@@ -128,8 +136,9 @@ const ExtraDetailsContainer = styled.div`
         flex-direction: row;
         padding: 0 0.2rem;
         width: 100%;
-        max-height: 4rem;
-    }
+        min-height: 100%;
+     }
+
 `
 
 const ExpTag = styled.span`
@@ -140,11 +149,17 @@ const ExpTag = styled.span`
     font-weight: 600;
     border-radius: 4px;
     cursor: pointer;
+    @media screen and (max-width: 453px) {
+        padding: .5rem;
+    }
 
     @media screen and (max-width: 968px) {
         font-size: 0.68rem;
-        max-height:1.6rem !important;
+        max-height:2rem;
+        align-items: center;
     }
+    
+   
 `
 
 const Column = styled(Col)`
@@ -153,7 +168,6 @@ const Column = styled(Col)`
     border-radius: 10px;
     max-height: 20rem;
     border: 1px solid #2b6690;
-
      @media screen and (max-width: 968px) {
         width: 95%;
         margin: 0 auto;
@@ -163,4 +177,5 @@ const Column = styled(Col)`
             cursor:pointer;
         }
     }
+   
 `
