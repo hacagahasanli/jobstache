@@ -56,8 +56,7 @@ export const JobDetailModal = ({ show = false }) => {
                                 {jobSubDetail?.map((item) => <QualificationItem key={v4()}>• {`${item}`}</QualificationItem>)}
                             </Qualification>
                         }
-                    } catch (err) {
-                    }
+                    } catch (err) { }
                 }
                 )
             }

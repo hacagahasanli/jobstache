@@ -9,9 +9,11 @@ import { animated } from "react-spring";
 import { JobDetailModal } from '../Modal';
 import { StyledLogo } from '../styled-components';
 import { setJobDetail, showModal } from '../../store/slices';
+import { dollar_sign, location } from "../../assets"
+
 
 const { Title, Subtitle, Text, Body } = Card;
-let jobDescription, salary, location, descLength = 120;
+let jobDescription, salary, jobLocation, descLength = 120;
 
 export const JobCard = ({ jobs }) => {
     const dispatch = useDispatch();
@@ -45,11 +47,11 @@ export const JobCard = ({ jobs }) => {
 
                 jobDescription = job_description;
                 salary = fieldsDefaultValues?.UN_DISCLOSED;
-                location = fieldsDefaultValues?.WORLD_WIDE;
+                jobLocation = fieldsDefaultValues?.WORLD_WIDE;
 
                 if (job_description?.length > descLength) jobDescription = jobDescShorter(job_description, descLength)
                 if (job_min_salary) salary = setSalaryDetail(job_max_salary, job_min_salary, job_salary_currency, job_salary_period)
-                if (job_country) location = countries[job_country] ?? job_country
+                if (job_country) jobLocation = countries[job_country] ?? job_country
 
                 return (
                     <animated.div key={job_id} style={style}>
@@ -65,15 +67,11 @@ export const JobCard = ({ jobs }) => {
                                 <StyledText>{jobDescription}</StyledText>
                                 <FooterDetails>
                                     <SingleDetail>
-                                        <span className="material-symbols-rounded" style={{ fontSize: "1rem", color: "#FFD43B", fontWeight: "600" }}>
-                                            location_on
-                                        </span>
-                                        <Text>{location}</Text>
+                                        <img src={location} alt="location_sign" />
+                                        <Text>{jobLocation}</Text>
                                     </SingleDetail>
                                     <SingleDetail>
-                                        <span className="material-symbols-rounded" style={{ fontSize: "1rem", color: "#529f61", fontWeight: "600" }}>
-                                            monetization_on
-                                        </span>
+                                        <img src={dollar_sign} alt="dollar_sign" />
                                         <Text>{salary}</Text>
                                     </SingleDetail>
                                 </FooterDetails>
@@ -120,6 +118,10 @@ const SingleDetail = styled.div`
     color:#e5e5e5;
     font-weight: 600;
     font-size: 0.8rem;
+
+    img {
+        width: 18px;
+    }
 `
 const StyledCard = styled(Card)`
     width: 100%;
