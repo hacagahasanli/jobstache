@@ -38,7 +38,7 @@ export const JobDetailModal = ({ show = false }) => {
             <h3>{job_title}</h3>
             <div>
                 <h5>{employer_name}</h5>
-                {jobDetail?.employer_website && <a href={employer_website} style={{ color: "#3282BB" }}>{employer_website}</a>}
+                {jobDetail?.employer_website && <a href={jobDetail?.employer_website} style={{ color: "#3282BB" }}>{jobDetail?.employer_website}</a>}
             </div>
         </DetailHeader>
         <Body style={{ padding: 0 }}>
@@ -57,11 +57,11 @@ export const JobDetailModal = ({ show = false }) => {
                 }
                 )
             }
-            <ApplyNow variant="primary">
-                <a href={jobDetail?.job_apply_link ?? "/"} style={{ textDecoration: "none", color: "#ffffff", fontWeight: "600" }}>
+            {jobDetail?.job_apply_link && <ApplyNow variant="primary">
+                <a href={jobDetail?.job_apply_link} style={{ textDecoration: "none", color: "#ffffff", fontWeight: "600" }}>
                     Apply now
                 </a>
-            </ApplyNow>
+            </ApplyNow>}
         </Body>
     </DetailModal>
 }
