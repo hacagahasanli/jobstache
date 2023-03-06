@@ -19,12 +19,12 @@ export const getJobsApi = createApi({
     tagTypes: ['Jobs'],
     endpoints: (builder) => ({
         getSearchedPosts: builder.query({
-            query: ({ query = "Software Developer", num_pages = 2, job_requirements = "", employment_types = "" }) => {
+            query: ({ query = 'Software Developer', num_pages = 2, job_requirements = "", employment_types = "" }) => {
                 const simpleJobQuery = `/search?query=${query}&num_pages=${num_pages}`
                 if (job_requirements && employment_types) return `${simpleJobQuery}&employment_types=${employment_types}&job_requirements=${job_requirements}`
                 if (job_requirements) return `${simpleJobQuery}&job_requirements=${job_requirements}`
                 if (employment_types) return `${simpleJobQuery}&employment_types=${employment_types}`
-                return simpleJobQuery;
+                if (query) return simpleJobQuery;
             },
             providesTags: ['Jobs'],
         }),

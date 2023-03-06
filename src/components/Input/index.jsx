@@ -11,12 +11,12 @@ export const Input = ({ getSearchedPosts }) => {
     const dispatch = useDispatch()
     const { requirements } = useSelector(state => state.job);
 
-    const searchJobHandler = () => {
+    const searchJobHandler = async () => {
         const inputValue = ref.current.value;
         dispatch(setSearchedValue(inputValue))
         if (Object.entries(requirements).length) {
             const { emp, exp } = requirements
-            getSearchedPosts({ query: inputValue, num_pages: 2, job_requirements: exp, employment_types: emp })
+            await getSearchedPosts({ query: inputValue, num_pages: 2, job_requirements: exp, employment_types: emp })
         }
     }
 

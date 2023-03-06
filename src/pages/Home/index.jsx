@@ -15,9 +15,9 @@ export default function Home() {
     //     getSearchedPosts({ query: "Software Developer", num_pages: 2, job_requirements: "", employment_types: "" })
     // }, [])
 
-    const getSearchedPosts = () => { }
-    const isLoading = false, isFetching = false;
-    const loadedComponent = (isLoading || isFetching) ? <JobSpinner /> : <JobDatas jobs={defaultJobs} />;
+    // const getSearchedPosts = () => { }
+    // const isLoading = false, isFetching = false;
+    const loadedComponent = (isLoading || isFetching) ? <JobSpinner /> : isError ? <h4>Something went wrong!</h4> : <JobDatas jobs={defaultJobs} />;
 
     return (
         <>
