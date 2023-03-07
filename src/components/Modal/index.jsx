@@ -123,7 +123,7 @@ const JobDetail = styled.pre`
 `
 
 const DetailModal = styled(Modal)`
-    background-color: rgb(0,0,0,0.6);
+    background-color: #000000;
     font-family: 'Golos Text', sans-serif;
 
     .modal-content,.modal-header,.modal-dialog{
