@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import styled from 'styled-components'
 import image from "../../assets/svgs/brands.svg"
 import { Button, Col, Container, Row, Spinner } from 'react-bootstrap'
@@ -6,21 +6,35 @@ import getJobsApi, { useGetSearchedPostsQuery } from '../../client'
 import { Header, LandingIntro, JobCard } from '../../components'
 import { defaultJobs } from '../../constants'
 import { Sidebard } from '../../shared'
+import { useDispatch } from 'react-redux'
 
 export default function Home() {
-    // const { data: jobsFirstLoad } = useGetSearchedPostsQuery()
-    // const [getSearchedPosts, { isLoading, isFetching, isError, data: jobs, error }] = getJobsApi.endpoints.getSearchedPosts.useLazyQuery()
+    const containerRef = useRef(null)
+    const dispatch = useDispatch()
 
-    // useEffect(() => {
-    //     getSearchedPosts({ query: "Software Developer", num_pages: 2, job_requirements: "", employment_types: "" })
-    // }, [])
+    // const navigate = useNavigate()
+    // const location = useLocation()
+
+    function handleTouchStart(event) {
+        containerRef.current.touchStartX = event.changedTouches[0].clientX;
+        console.log(changedTouches)
+    }
+
+    function handleTouchEnd(event) {
+        const touchEndX = event.changedTouches[0].clientX;
+        const touchDistance = touchEndX - containerRef.current.touchStartX;
+
+        if (touchDistance > 50) {
+            dispatch(showModal(false))
+        }
+    }
 
     const getSearchedPosts = () => { }
     const isLoading = false, isFetching = false, isError = false;
     const loadedComponent = (isLoading || isFetching) ? <JobSpinner /> : isError ? <h4>Something went wrong!</h4> : <JobDatas jobs={defaultJobs} />;
 
     return (
-        <>
+        <div ref={containerRef} onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
             <Container >
                 <BackroundImage src={image} alt="sadsa" />
                 <Header />
@@ -36,7 +50,7 @@ export default function Home() {
                     </BodyContainer>
                 </StyledContainer>
             </Container>
-        </>
+        </div>
     )
 }
 
@@ -132,3 +146,10 @@ const BackroundImage = styled.img`
     opacity: 0.02;
 `
 // console.log(defaultJobs, "DEFAULT JOBS");
+
+    // const { data: jobsFirstLoad } = useGetSearchedPostsQuery()
+    // const [getSearchedPosts, { isLoading, isFetching, isError, data: jobs, error }] = getJobsApi.endpoints.getSearchedPosts.useLazyQuery()
+
+    // useEffect(() => {
+    //     getSearchedPosts({ query: "Software Developer", num_pages: 2, job_requirements: "", employment_types: "" })
+    // }, [])
