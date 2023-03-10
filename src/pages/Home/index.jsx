@@ -18,7 +18,6 @@ export default function Home() {
 
     function handleTouchStart(event) {
         containerRef.current.touchStartX = event.changedTouches[0].clientX;
-        console.log(changedTouches)
     }
 
     function handleTouchEnd(event) {
