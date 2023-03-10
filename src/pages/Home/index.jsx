@@ -7,6 +7,7 @@ import { Header, LandingIntro, JobCard } from '../../components'
 import { defaultJobs } from '../../constants'
 import { Sidebard } from '../../shared'
 import { useDispatch } from 'react-redux'
+import { showModal } from '../../store/slices'
 
 export default function Home() {
     const containerRef = useRef(null)
